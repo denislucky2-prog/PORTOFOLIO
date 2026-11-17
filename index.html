@@ -1,64 +1,332 @@
-**LDS**
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050510">
+<title>Lucky Denis | Portofolio</title>
+<meta name="description" content="Website resmi dan portofolio Lucky Denis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
-- [Beranda](#home)
-- [Galeri](#galeri)
-- [Tentang](#tentang)
-- [Keahlian](#keahlian)
-- [Pengalaman](#pengalaman)
-- [Organisasi](#organisasi)
-- [Pelatihan](#pelatihan)
-- [Pendidikan](#pendidikan)
-- [Prestasi](#prestasi)
-- [Kontak](#kontak)
+<!--
+=====================================================
+ CARA PAKAI (baca sebentar):
+ 1. Taruh 3 foto di folder yang SAMA dengan index.html, beri nama:
+      foto-formal.jpg   -> foto berdiri tangan menyilang (halaman utama)
+      foto-duduk.jpg    -> foto duduk di kursi (halaman Tentang)
+      foto-siluet.jpg   -> foto siluet hitam putih (halaman Galeri)
+    Foto pencapaian: pencapaian-1.jpg, pencapaian-2.jpg, dst.
+ 2. Cari tulisan "GANTI" di file ini lalu isi dengan data kamu.
+ 3. Form kontak: isi FORMSPREE_ID (gratis di formspree.io) supaya
+    pesan masuk langsung ke emailmu. Kalau dikosongkan, form akan
+    membuka aplikasi email kamu (mailto).
+=====================================================
+-->
 
-Foto Lucky Denis Saputra
+<style>
+:root{
+  --bg:#050510; --bg2:#0b0b1f; --text:#eef0ff; --muted:#9a9cc0;
+  --a1:#7c5cff; --a2:#22d3ee; --white:#ffffff;
+  --card:rgba(255,255,255,.04); --line:rgba(255,255,255,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.6}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.1}
+a{color:inherit;text-decoration:none}
 
-# Lucky Denis Saputra
+/* Background aurora */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg::before,.bg::after{content:"";position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(120px);opacity:.35;animation:float 18s ease-in-out infinite alternate}
+.bg::before{background:var(--a1);top:-20vmax;left:-15vmax}
+.bg::after{background:var(--a2);bottom:-25vmax;right:-15vmax;animation-delay:-9s}
+@keyframes float{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+.grid{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.25;mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%);-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%)}
 
-HUMAN RESOURCES ENTHUSIAST | PSYCHOLOGY STUDENT
+/* Navbar */
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;padding:6px;background:rgba(10,10,30,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px;max-width:calc(100vw - 24px);overflow-x:auto}
+nav button{background:none;border:0;color:var(--muted);font:500 .9rem 'Inter',sans-serif;padding:9px 18px;border-radius:999px;cursor:pointer;transition:.25s;white-space:nowrap}
+nav button:hover{color:var(--text)}
+nav button.active{background:var(--white);color:#0a0a1a}
 
-Psychology undergraduate specializing in Industrial and Organizational Psychology with hands-on experience in Human Resources, Learning & Development, Talent Acquisition, and Organizational Development.
+/* Pages */
+.page{display:none;min-height:100vh;padding:110px 6vw 80px;max-width:1280px;margin:0 auto;animation:in .6s ease}
+.page.active{display:block}
+@keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
-[Hubungi saya](#kontak)[Lihat pengalaman](#pengalaman)[LinkedIn](https://www.linkedin.com/in/lucky-denis-b1a312287)[Instagram](https://www.instagram.com/luckydennis_)
+/* HERO */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:4vw;align-items:center;min-height:calc(100vh - 190px)}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--muted);background:var(--card)}
+.tag i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e}
+.hero h1{font-size:clamp(2.8rem,7vw,5.6rem);margin:22px 0 18px;letter-spacing:-.03em}
+.grad{background:linear-gradient(90deg,var(--white),var(--a2) 50%,var(--a1));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--muted);font-size:1.1rem;max-width:520px}
+.role{margin-top:14px;font-weight:500;color:var(--a2);min-height:1.6em}
+.role::after{content:"|";margin-left:2px;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid var(--line);cursor:pointer;transition:.3s;background:var(--card);color:var(--text);font-family:inherit}
+.btn:hover{transform:translateY(-3px);border-color:var(--white)}
+.btn.primary{background:var(--white);color:#0a0a1a;border-color:var(--white)}
+.btn.primary:hover{box-shadow:0 0 40px rgba(255,255,255,.45)}
+.socials{display:flex;gap:12px;margin-top:30px}
+.socials a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:var(--card);transition:.3s}
+.socials a:hover{background:var(--white);color:#0a0a1a;transform:translateY(-4px);box-shadow:0 0 28px rgba(255,255,255,.4)}
+.socials svg{width:20px;height:20px;fill:currentColor}
 
-**3.99**IPK
+/* Foto utama dengan highlight putih di sekeliling tubuh */
+.portrait{position:relative;display:grid;place-items:center}
+.portrait .halo{position:absolute;width:92%;aspect-ratio:3/4;border-radius:50% 50% 46% 46%;background:radial-gradient(closest-side,rgba(255,255,255,.55),rgba(255,255,255,.12) 60%,transparent 75%);filter:blur(34px);animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.6;transform:scale(1.06)}}
+.portrait .frame{position:relative;width:min(100%,430px);aspect-ratio:3/4;border-radius:28px;overflow:hidden;
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.9),0 0 22px 2px rgba(255,255,255,.75),0 0 90px 12px rgba(255,255,255,.28);
+  transition:transform .5s}
+.portrait .frame:hover{transform:scale(1.02) rotate(-.6deg)}
+.portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.portrait .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(5,5,16,.55));pointer-events:none}
+.portrait .chip{position:absolute;padding:10px 16px;border-radius:14px;background:rgba(10,10,30,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);font-size:.82rem;font-weight:500;animation:bob 6s ease-in-out infinite}
+.portrait .chip.c1{top:10%;left:-4%}
+.portrait .chip.c2{bottom:12%;right:-4%;animation-delay:-3s}
+@keyframes bob{50%{transform:translateY(-10px)}}
 
-**450+**Students assisted
+/* Section headings */
+.eyebrow{color:var(--a2);font-weight:600;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase}
+.title{font-size:clamp(2rem,4.6vw,3.4rem);margin:10px 0 40px;letter-spacing:-.02em}
 
-**250+**Internships handled
+/* ABOUT */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:5vw;align-items:center}
+.about .photo{border-radius:28px;overflow:hidden;border:1px solid var(--line);position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.about .photo img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:center 20%}
+.about p{color:var(--muted);margin-bottom:16px;font-size:1.04rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+.stat{padding:20px;border-radius:18px;background:var(--card);border:1px solid var(--line);text-align:center}
+.stat b{font:700 2rem 'Space Grotesk';display:block}
+.stat span{font-size:.8rem;color:var(--muted)}
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skills span{padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:.88rem}
 
-**30+**Partner companies
+/* GALLERY / PENCAPAIAN */
+.silhouette{position:relative;border-radius:28px;overflow:hidden;margin-bottom:28px;border:1px solid var(--line)}
+.silhouette img{width:100%;height:min(70vh,640px);object-fit:cover;object-position:center 45%;display:block}
+.silhouette .cap{position:absolute;left:0;right:0;bottom:0;padding:50px 28px 26px;background:linear-gradient(transparent,rgba(5,5,16,.9))}
+.silhouette .cap h3{font-size:clamp(1.4rem,3vw,2.2rem)}
+.silhouette .cap p{color:var(--muted)}
+.masonry{columns:3 260px;column-gap:18px}
+.item{break-inside:avoid;margin-bottom:18px;border-radius:20px;overflow:hidden;position:relative;border:1px solid var(--line);background:var(--card);cursor:zoom-in;transition:.4s}
+.item:hover{transform:translateY(-6px);box-shadow:0 0 0 1px rgba(255,255,255,.7),0 20px 60px rgba(255,255,255,.12)}
+.item img{width:100%;display:block;min-height:180px;object-fit:cover}
+.item .info{padding:16px 18px}
+.item .info small{color:var(--a2);font-weight:600;letter-spacing:.08em}
+.item .info h3{font-size:1.1rem;margin-top:4px}
+.item .info p{font-size:.88rem;color:var(--muted);margin-top:4px}
 
-## Galeri
+/* Lightbox */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;display:none;place-items:center;padding:24px;cursor:zoom-out}
+.lb.show{display:grid}
+.lb img{max-width:100%;max-height:90vh;border-radius:16px;box-shadow:0 0 60px rgba(255,255,255,.2)}
 
-Lucky Denis Saputra tersenyum dengan tangan bersilang
+/* CONTACT */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:5vw}
+.contact p{color:var(--muted);margin-bottom:24px}
+.cinfo a{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin-bottom:12px;transition:.3s}
+.cinfo a:hover{border-color:var(--white);transform:translateX(6px)}
+.cinfo svg{width:22px;height:22px;fill:currentColor;flex:none}
+form{padding:30px;border-radius:24px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+label{display:block;font-size:.82rem;color:var(--muted);margin:0 0 6px 2px}
+input,textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font:inherit;margin-bottom:18px;outline:none;transition:.25s}
+input:focus,textarea:focus{border-color:var(--white);box-shadow:0 0 0 3px rgba(255,255,255,.12)}
+textarea{min-height:140px;resize:vertical}
+#status{margin-top:14px;font-size:.9rem;min-height:1.2em}
 
-Profesional
+footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px}
 
-Lucky Denis Saputra menoleh dengan tenang
+@media(max-width:860px){
+  .hero,.about,.contact{grid-template-columns:1fr}
+  .hero{text-align:center;padding-top:10px}
+  .hero p.lead{margin:0 auto}
+  .cta,.socials{justify-content:center}
+  .portrait{order:-1;margin-bottom:10px}
+  .portrait .frame{width:min(78%,360px)}
+  .portrait .chip.c1{left:2%}.portrait .chip.c2{right:2%}
+  .stats{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="grid"></div>
 
-Fokus
+<nav id="nav">
+  <button class="active" data-page="home">Beranda</button>
+  <button data-page="about">Tentang</button>
+  <button data-page="gallery">Pencapaian</button>
+  <button data-page="contact">Kontak</button>
+</nav>
 
-Siluet Lucky Denis Saputra duduk di atas kotak
+<!-- ============ HALAMAN 1: BERANDA ============ -->
+<main class="page active" id="home">
+  <section class="hero">
+    <div>
+      <span class="tag"><i></i> Terbuka untuk peluang baru</span>
+      <h1>Halo, saya <span class="grad">Lucky Denis</span></h1>
+      <p class="lead">Saya berfokus pada pengembangan diri dan karya yang tidak hanya bermanfaat, tetapi juga menghadirkan pengalaman yang berkesan dan berdampak.</p> <!-- GANTI deskripsi -->
+      <div class="role" id="role"></div>
+      <div class="cta">
+        <button class="btn primary" onclick="go('contact')">Hubungi Saya →</button>
+        <button class="btn" onclick="go('gallery')">Lihat Pencapaian</button>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/lucky-denis-b1a312287" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a href="https://www.instagram.com/luckydennis_" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+        <a href="mailto:emailkamu@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a> <!-- GANTI email -->
+      </div>
+    </div>
 
-Siluet
+    <div class="portrait">
+      <div class="halo"></div>
+      <div class="frame"><img src="foto-formal.jpg" alt="Foto formal Lucky Denis"></div>
+      <div class="chip c1">✦ Profesional</div>
+      <div class="chip c2">✦ Berdampak</div>
+    </div>
+  </section>
+</main>
 
-## Tentang
+<!-- ============ HALAMAN 2: TENTANG ============ -->
+<section class="page" id="about">
+  <span class="eyebrow">Tentang Saya</span>
+  <h2 class="title">Mengenal lebih dekat</h2>
+  <div class="about">
+    <div class="photo"><img src="foto-duduk.jpg" alt="Lucky Denis"></div>
+    <div>
+      <p>Halo! Saya Lucky Denis. Tuliskan perkenalan singkat tentang dirimu di sini: latar belakang pendidikan, minat, dan hal yang kamu kejar saat ini.</p> <!-- GANTI -->
+      <p>Tambahkan paragraf kedua tentang pengalaman, nilai yang kamu pegang, atau tujuan kariermu.</p> <!-- GANTI -->
+      <div class="stats">
+        <div class="stat"><b>3+</b><span>Tahun Pengalaman</span></div> <!-- GANTI -->
+        <div class="stat"><b>10+</b><span>Proyek</span></div> <!-- GANTI -->
+        <div class="stat"><b>5+</b><span>Penghargaan</span></div> <!-- GANTI -->
+      </div>
+      <div class="skills">
+        <span>Komunikasi</span><span>Kepemimpinan</span><span>Analisis</span><span>Kerja Tim</span><span>Public Speaking</span> <!-- GANTI skill -->
+      </div>
+    </div>
+  </div>
+</section>
 
-## Keahlian
+<!-- ============ HALAMAN 3: PENCAPAIAN / GALERI ============ -->
+<section class="page" id="gallery">
+  <span class="eyebrow">Galeri</span>
+  <h2 class="title">Pencapaian &amp; Momen</h2>
 
-## Pengalaman Profesional
+  <div class="silhouette">
+    <img src="foto-siluet.jpg" alt="Siluet Lucky Denis">
+    <div class="cap">
+      <h3>Di balik setiap pencapaian, ada proses.</h3> <!-- GANTI quote -->
+      <p>Perjalanan yang membentuk siapa saya hari ini.</p>
+    </div>
+  </div>
 
-## Kepemimpinan & Organisasi
+  <!-- Tambah foto pencapaian: salin 1 blok .item, ganti src, judul, dan keterangan -->
+  <div class="masonry">
+    <div class="item"><img src="pencapaian-1.jpg" alt="Pencapaian 1" onerror="this.style.minHeight='220px'"><div class="info"><small>2025</small><h3>Judul Pencapaian 1</h3><p>Keterangan singkat pencapaian.</p></div></div>
+    <div class="item"><img src="pencapaian-2.jpg" alt="Pencapaian 2" onerror="this.style.minHeight='300px'"><div class="info"><small>2025</small><h3>Judul Pencapaian 2</h3><p>Keterangan singkat pencapaian.</p></div></div>
+    <div class="item"><img src="pencapaian-3.jpg" alt="Pencapaian 3" onerror="this.style.minHeight='240px'"><div class="info"><small>2024</small><h3>Judul Pencapaian 3</h3><p>Keterangan singkat pencapaian.</p></div></div>
+    <div class="item"><img src="pencapaian-4.jpg" alt="Pencapaian 4" onerror="this.style.minHeight='280px'"><div class="info"><small>2024</small><h3>Judul Pencapaian 4</h3><p>Keterangan singkat pencapaian.</p></div></div>
+    <div class="item"><img src="pencapaian-5.jpg" alt="Pencapaian 5" onerror="this.style.minHeight='200px'"><div class="info"><small>2023</small><h3>Judul Pencapaian 5</h3><p>Keterangan singkat pencapaian.</p></div></div>
+    <div class="item"><img src="pencapaian-6.jpg" alt="Pencapaian 6" onerror="this.style.minHeight='260px'"><div class="info"><small>2023</small><h3>Judul Pencapaian 6</h3><p>Keterangan singkat pencapaian.</p></div></div>
+  </div>
+</section>
 
-## Pelatihan
+<!-- ============ HALAMAN 4: KONTAK ============ -->
+<section class="page" id="contact">
+  <span class="eyebrow">Kontak</span>
+  <h2 class="title">Mari terhubung</h2>
+  <div class="contact">
+    <div>
+      <p>Punya peluang, pertanyaan, atau sekadar ingin menyapa? Kirim pesan lewat formulir, atau hubungi saya melalui media sosial.</p>
+      <div class="cinfo">
+        <a href="mailto:emailkamu@gmail.com"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>emailkamu@gmail.com</a> <!-- GANTI email -->
+        <a href="https://www.linkedin.com/in/lucky-denis-b1a312287" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn: Lucky Denis</a>
+        <a href="https://www.instagram.com/luckydennis_" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>Instagram: @luckydennis_</a>
+      </div>
+    </div>
 
-## Pendidikan
+    <form id="form">
+      <label for="name">Nama</label>
+      <input id="name" name="name" required placeholder="Nama lengkap">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required placeholder="email@kamu.com">
+      <label for="message">Pesan</label>
+      <textarea id="message" name="message" required placeholder="Tulis pesanmu di sini..."></textarea>
+      <button class="btn primary" type="submit">Kirim Pesan ✈</button>
+      <div id="status"></div>
+    </form>
+  </div>
+</section>
 
-## Prestasi
+<footer>© <span id="yr"></span> Lucky Denis. Dibuat dengan ♥</footer>
 
-## Kontak
+<div class="lb" id="lb"><img alt=""></div>
 
-KAB. Semarang 0856-4156-6293 [denislucky2@gmail.com](mailto:denislucky2@gmail.com) [802023264@student.uksw.edu](mailto:802023264@student.uksw.edu) [LinkedIn: Lucky Denis](https://www.linkedin.com/in/lucky-denis-b1a312287) [Instagram: @luckydennis\_](https://www.instagram.com/luckydennis_)
+<script>
+/* ====== PENGATURAN ====== */
+const EMAIL = "emailkamu@gmail.com";   // GANTI: email tujuan pesan
+const FORMSPREE_ID = "";               // GANTI (opsional): contoh "xyzabcde" dari formspree.io
+const ROLES = ["Mahasiswa", "Profesional Muda", "Pembelajar Seumur Hidup"]; // GANTI
 
-© 2026 Lucky Denis Saputra
+/* ====== NAVIGASI HALAMAN ====== */
+const pages = document.querySelectorAll('.page');
+const btns = document.querySelectorAll('#nav button');
+function go(id){
+  pages.forEach(p => p.classList.toggle('active', p.id === id));
+  btns.forEach(b => b.classList.toggle('active', b.dataset.page === id));
+  window.scrollTo({top:0,behavior:'smooth'});
+  history.replaceState(null,'','#'+id);
+}
+btns.forEach(b => b.addEventListener('click', () => go(b.dataset.page)));
+if (location.hash && document.getElementById(location.hash.slice(1))) go(location.hash.slice(1));
+
+/* ====== EFEK KETIK ====== */
+(function(){
+  const el = document.getElementById('role'); let i=0,j=0,del=false;
+  (function tick(){
+    const w = ROLES[i];
+    el.textContent = w.slice(0,j);
+    if(!del && j++ === w.length){ del=true; return setTimeout(tick,1400); }
+    if(del && j-- === 0){ del=false; i=(i+1)%ROLES.length; }
+    setTimeout(tick, del?40:85);
+  })();
+})();
+
+/* ====== LIGHTBOX ====== */
+const lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+document.querySelectorAll('.item').forEach(it => it.addEventListener('click', () => {
+  lbImg.src = it.querySelector('img').src; lb.classList.add('show');
+}));
+lb.addEventListener('click', () => lb.classList.remove('show'));
+
+/* ====== FORM KONTAK ====== */
+document.getElementById('form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, st = document.getElementById('status');
+  const d = {name:f.name.value, email:f.email.value, message:f.message.value};
+  if (FORMSPREE_ID) {
+    st.textContent = 'Mengirim...';
+    try {
+      const r = await fetch('https://formspree.io/f/'+FORMSPREE_ID, {
+        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(d)
+      });
+      if (r.ok) { st.textContent = '✓ Pesan terkirim. Terima kasih!'; f.reset(); }
+      else throw 0;
+    } catch { st.textContent = 'Gagal mengirim. Coba lagi atau kirim langsung via email.'; }
+  } else {
+    const sub = encodeURIComponent('Pesan dari ' + d.name + ' (portofolio)');
+    const body = encodeURIComponent(d.message + '\n\n— ' + d.name + '\n' + d.email);
+    location.href = `mailto:${EMAIL}?subject=${sub}&body=${body}`;
+    st.textContent = 'Membuka aplikasi emailmu...';
+  }
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
