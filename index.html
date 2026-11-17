@@ -4,53 +4,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050510">
-<title>Lucky Denis | Portofolio</title>
-<meta name="description" content="Website resmi dan portofolio Lucky Denis.">
+<title>Lucky Denis Saputra | Portofolio</title>
+<meta name="description" content="Portofolio Lucky Denis Saputra: Human Resources Enthusiast dan mahasiswa Psikologi (Industri dan Organisasi) Universitas Kristen Satya Wacana.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
 <!--
 =====================================================
- CARA PAKAI (baca sebentar):
- 1. Taruh 3 foto di folder yang SAMA dengan index.html, beri nama:
-      foto-formal.jpg   -> foto berdiri tangan menyilang (halaman utama)
-      foto-duduk.jpg    -> foto duduk di kursi (halaman Tentang)
-      foto-siluet.jpg   -> foto siluet hitam putih (halaman Galeri)
-    Foto pencapaian: pencapaian-1.jpg, pencapaian-2.jpg, dst.
- 2. Cari tulisan "GANTI" di file ini lalu isi dengan data kamu.
- 3. Form kontak: isi FORMSPREE_ID (gratis di formspree.io) supaya
-    pesan masuk langsung ke emailmu. Kalau dikosongkan, form akan
-    membuka aplikasi email kamu (mailto).
+ CARA PAKAI
+ 1. Taruh foto di folder yang SAMA dengan index.html:
+      foto-formal.jpg   -> halaman Beranda (foto berdiri tangan menyilang)
+      foto-duduk.jpg    -> halaman Tentang
+      foto-siluet.jpg   -> halaman Pencapaian
+      pencapaian-1.jpg, pencapaian-2.jpg, ... pencapaian-15.jpg
+        -> foto tiap pencapaian sesuai urutan di daftar (belum ada = tampil kotak "Foto menyusul")
+ 2. (Opsional) Tombol "Unduh CV": taruh file PDF bernama cv-lucky-denis.pdf di folder yang sama.
+ 3. Form kontak: isi FORMSPREE_ID di bagian script (gratis di formspree.io)
+    agar pesan masuk langsung ke emailmu. Kosong = membuka aplikasi email (mailto).
+ 4. Semua data (pengalaman, pencapaian) ada di bagian <script> paling bawah, mudah diedit.
 =====================================================
 -->
 
 <style>
 :root{
-  --bg:#050510; --bg2:#0b0b1f; --text:#eef0ff; --muted:#9a9cc0;
+  --bg:#050510; --text:#eef0ff; --muted:#9a9cc0;
   --a1:#7c5cff; --a2:#22d3ee; --white:#ffffff;
   --card:rgba(255,255,255,.04); --line:rgba(255,255,255,.1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.6}
-h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.1}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;line-height:1.15}
 a{color:inherit;text-decoration:none}
 
-/* Background aurora */
 .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
 .bg::before,.bg::after{content:"";position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(120px);opacity:.35;animation:float 18s ease-in-out infinite alternate}
 .bg::before{background:var(--a1);top:-20vmax;left:-15vmax}
 .bg::after{background:var(--a2);bottom:-25vmax;right:-15vmax;animation-delay:-9s}
 @keyframes float{to{transform:translate(8vmax,6vmax) scale(1.15)}}
-.grid{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.25;mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%);-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%)}
+.grid{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.25;-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%);mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%)}
 
-/* Navbar */
-nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;padding:6px;background:rgba(10,10,30,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px;max-width:calc(100vw - 24px);overflow-x:auto}
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;padding:6px;background:rgba(10,10,30,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px;max-width:calc(100vw - 24px);overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
 nav button{background:none;border:0;color:var(--muted);font:500 .9rem 'Inter',sans-serif;padding:9px 18px;border-radius:999px;cursor:pointer;transition:.25s;white-space:nowrap}
 nav button:hover{color:var(--text)}
 nav button.active{background:var(--white);color:#0a0a1a}
 
-/* Pages */
 .page{display:none;min-height:100vh;padding:110px 6vw 80px;max-width:1280px;margin:0 auto;animation:in .6s ease}
 .page.active{display:block}
 @keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
@@ -59,9 +58,9 @@ nav button.active{background:var(--white);color:#0a0a1a}
 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:4vw;align-items:center;min-height:calc(100vh - 190px)}
 .tag{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--muted);background:var(--card)}
 .tag i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e}
-.hero h1{font-size:clamp(2.8rem,7vw,5.6rem);margin:22px 0 18px;letter-spacing:-.03em}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5.2rem);margin:22px 0 18px;letter-spacing:-.03em}
 .grad{background:linear-gradient(90deg,var(--white),var(--a2) 50%,var(--a1));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lead{color:var(--muted);font-size:1.1rem;max-width:520px}
+.hero p.lead{color:var(--muted);font-size:1.08rem;max-width:540px}
 .role{margin-top:14px;font-weight:500;color:var(--a2);min-height:1.6em}
 .role::after{content:"|";margin-left:2px;animation:blink 1s infinite}
 @keyframes blink{50%{opacity:0}}
@@ -73,15 +72,13 @@ nav button.active{background:var(--white);color:#0a0a1a}
 .socials{display:flex;gap:12px;margin-top:30px}
 .socials a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:var(--card);transition:.3s}
 .socials a:hover{background:var(--white);color:#0a0a1a;transform:translateY(-4px);box-shadow:0 0 28px rgba(255,255,255,.4)}
-.socials svg{width:20px;height:20px;fill:currentColor}
+.socials svg,.cinfo svg{width:20px;height:20px;fill:currentColor}
 
-/* Foto utama dengan highlight putih di sekeliling tubuh */
 .portrait{position:relative;display:grid;place-items:center}
 .portrait .halo{position:absolute;width:92%;aspect-ratio:3/4;border-radius:50% 50% 46% 46%;background:radial-gradient(closest-side,rgba(255,255,255,.55),rgba(255,255,255,.12) 60%,transparent 75%);filter:blur(34px);animation:pulse 5s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.6;transform:scale(1.06)}}
 .portrait .frame{position:relative;width:min(100%,430px);aspect-ratio:3/4;border-radius:28px;overflow:hidden;
-  box-shadow:0 0 0 1.5px rgba(255,255,255,.9),0 0 22px 2px rgba(255,255,255,.75),0 0 90px 12px rgba(255,255,255,.28);
-  transition:transform .5s}
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.9),0 0 22px 2px rgba(255,255,255,.75),0 0 90px 12px rgba(255,255,255,.28);transition:transform .5s}
 .portrait .frame:hover{transform:scale(1.02) rotate(-.6deg)}
 .portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .portrait .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(5,5,16,.55));pointer-events:none}
@@ -90,38 +87,77 @@ nav button.active{background:var(--white);color:#0a0a1a}
 .portrait .chip.c2{bottom:12%;right:-4%;animation-delay:-3s}
 @keyframes bob{50%{transform:translateY(-10px)}}
 
-/* Section headings */
 .eyebrow{color:var(--a2);font-weight:600;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase}
-.title{font-size:clamp(2rem,4.6vw,3.4rem);margin:10px 0 40px;letter-spacing:-.02em}
+.title{font-size:clamp(2rem,4.6vw,3.4rem);margin:10px 0 36px;letter-spacing:-.02em}
+.sub{font-size:1.35rem;margin:56px 0 20px;display:flex;align-items:center;gap:14px}
+.sub::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* ABOUT */
-.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:5vw;align-items:center}
-.about .photo{border-radius:28px;overflow:hidden;border:1px solid var(--line);position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:5vw;align-items:start}
+.about .photo{border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5);position:sticky;top:100px}
 .about .photo img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:center 20%}
 .about p{color:var(--muted);margin-bottom:16px;font-size:1.04rem}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
-.stat{padding:20px;border-radius:18px;background:var(--card);border:1px solid var(--line);text-align:center}
-.stat b{font:700 2rem 'Space Grotesk';display:block}
-.stat span{font-size:.8rem;color:var(--muted)}
-.skills{display:flex;flex-wrap:wrap;gap:10px}
-.skills span{padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:.88rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+.stat{padding:18px 10px;border-radius:18px;background:var(--card);border:1px solid var(--line);text-align:center}
+.stat b{font:700 1.7rem 'Space Grotesk';display:block}
+.stat span{font-size:.74rem;color:var(--muted);line-height:1.3;display:block}
+.skillgroup{margin-bottom:18px}
+.skillgroup h4{font-size:.95rem;margin-bottom:10px}
+.skills{display:flex;flex-wrap:wrap;gap:8px}
+.skills span{padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:.84rem}
+.edu{display:grid;gap:12px}
+.edu div{padding:18px 20px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.edu small{color:var(--a2);font-weight:600}
+.edu h4{font-size:1.05rem;margin:4px 0}
+.edu p{margin:0;font-size:.9rem}
 
-/* GALLERY / PENCAPAIAN */
-.silhouette{position:relative;border-radius:28px;overflow:hidden;margin-bottom:28px;border:1px solid var(--line)}
-.silhouette img{width:100%;height:min(70vh,640px);object-fit:cover;object-position:center 45%;display:block}
-.silhouette .cap{position:absolute;left:0;right:0;bottom:0;padding:50px 28px 26px;background:linear-gradient(transparent,rgba(5,5,16,.9))}
+/* EXPERIENCE */
+.box{position:relative;border-radius:28px;padding:34px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.35);box-shadow:0 0 50px rgba(255,255,255,.08),inset 0 0 40px rgba(255,255,255,.03)}
+.box .badge{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--white);color:#0a0a1a;font-size:.78rem;font-weight:700;margin-bottom:14px}
+.box h3{font-size:clamp(1.4rem,2.8vw,2.1rem);letter-spacing:-.01em}
+.box .meta{color:var(--muted);margin:8px 0 26px}
+.subgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pos{padding:24px;border-radius:20px;background:rgba(5,5,16,.6);border:1px solid var(--line);transition:.35s}
+.pos:hover{border-color:var(--white);transform:translateY(-6px);box-shadow:0 0 40px rgba(255,255,255,.12)}
+.pos .num{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a1),var(--a2));font:700 1rem 'Space Grotesk';margin-bottom:14px}
+.pos h4{font-size:1.15rem;margin-bottom:12px}
+ul.pts{list-style:none}
+ul.pts li{position:relative;padding-left:18px;margin-bottom:9px;font-size:.9rem;color:var(--muted)}
+ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--a2)}
+details{border-radius:18px;border:1px solid var(--line);background:var(--card);margin-bottom:12px;transition:.3s}
+details[open],details:hover{border-color:rgba(255,255,255,.45)}
+summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;color:var(--a2);transition:.3s;flex:none}
+details[open] summary::after{transform:rotate(45deg)}
+summary h4{font-size:1.05rem}
+summary small{display:block;color:var(--muted);font-family:'Inter';font-weight:400;font-size:.84rem;margin-top:2px}
+summary .date{font-size:.8rem;color:var(--a2);white-space:nowrap;font-weight:600}
+details .body{padding:0 22px 20px}
+
+/* ACHIEVEMENTS */
+.silhouette{position:relative;border-radius:28px;overflow:hidden;margin-bottom:34px;border:1px solid var(--line)}
+.silhouette img{width:100%;height:min(66vh,600px);object-fit:cover;object-position:center 45%;display:block}
+.silhouette .cap{position:absolute;left:0;right:0;bottom:0;padding:50px 28px 26px;background:linear-gradient(transparent,rgba(5,5,16,.92))}
 .silhouette .cap h3{font-size:clamp(1.4rem,3vw,2.2rem)}
 .silhouette .cap p{color:var(--muted)}
-.masonry{columns:3 260px;column-gap:18px}
-.item{break-inside:avoid;margin-bottom:18px;border-radius:20px;overflow:hidden;position:relative;border:1px solid var(--line);background:var(--card);cursor:zoom-in;transition:.4s}
-.item:hover{transform:translateY(-6px);box-shadow:0 0 0 1px rgba(255,255,255,.7),0 20px 60px rgba(255,255,255,.12)}
-.item img{width:100%;display:block;min-height:180px;object-fit:cover}
-.item .info{padding:16px 18px}
-.item .info small{color:var(--a2);font-weight:600;letter-spacing:.08em}
-.item .info h3{font-size:1.1rem;margin-top:4px}
-.item .info p{font-size:.88rem;color:var(--muted);margin-top:4px}
-
-/* Lightbox */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filters button{padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font:500 .86rem 'Inter';cursor:pointer;transition:.25s}
+.filters button.on,.filters button:hover{background:var(--white);color:#0a0a1a;border-color:var(--white)}
+.ach{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:.4s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 0 0 1px rgba(255,255,255,.7),0 20px 60px rgba(255,255,255,.12)}
+.card .pic{aspect-ratio:16/10;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(34,211,238,.15));display:grid;place-items:center;color:var(--muted);font-size:.82rem;position:relative;overflow:hidden}
+.card .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.card .pic span{text-align:center;padding:10px}
+.card .pic span b{display:block;font-size:1.8rem;margin-bottom:4px}
+.card .info{padding:18px 20px 22px}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.card .yr{color:var(--a2);font-weight:700;font-size:.85rem}
+.card .kind{font-size:.7rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.card h3{font-size:1.05rem;margin-bottom:6px}
+.card p{font-size:.86rem;color:var(--muted)}
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;display:none;place-items:center;padding:24px;cursor:zoom-out}
 .lb.show{display:grid}
 .lb img{max-width:100%;max-height:90vh;border-radius:16px;box-shadow:0 0 60px rgba(255,255,255,.2)}
@@ -129,27 +165,28 @@ nav button.active{background:var(--white);color:#0a0a1a}
 /* CONTACT */
 .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:5vw}
 .contact p{color:var(--muted);margin-bottom:24px}
-.cinfo a{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin-bottom:12px;transition:.3s}
+.cinfo a{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin-bottom:12px;transition:.3s;word-break:break-all}
 .cinfo a:hover{border-color:var(--white);transform:translateX(6px)}
-.cinfo svg{width:22px;height:22px;fill:currentColor;flex:none}
+.cinfo svg{width:22px;height:22px;flex:none}
 form{padding:30px;border-radius:24px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 label{display:block;font-size:.82rem;color:var(--muted);margin:0 0 6px 2px}
 input,textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font:inherit;margin-bottom:18px;outline:none;transition:.25s}
 input:focus,textarea:focus{border-color:var(--white);box-shadow:0 0 0 3px rgba(255,255,255,.12)}
 textarea{min-height:140px;resize:vertical}
 #status{margin-top:14px;font-size:.9rem;min-height:1.2em}
-
 footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px}
 
-@media(max-width:860px){
-  .hero,.about,.contact{grid-template-columns:1fr}
+@media(max-width:900px){
+  .hero,.about,.contact,.subgrid{grid-template-columns:1fr}
   .hero{text-align:center;padding-top:10px}
   .hero p.lead{margin:0 auto}
   .cta,.socials{justify-content:center}
   .portrait{order:-1;margin-bottom:10px}
   .portrait .frame{width:min(78%,360px)}
   .portrait .chip.c1{left:2%}.portrait .chip.c2{right:2%}
-  .stats{grid-template-columns:repeat(3,1fr)}
+  .about .photo{position:static}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .box{padding:22px}
 }
 </style>
 </head>
@@ -159,6 +196,7 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
 <nav id="nav">
   <button class="active" data-page="home">Beranda</button>
   <button data-page="about">Tentang</button>
+  <button data-page="experience">Pengalaman</button>
   <button data-page="gallery">Pencapaian</button>
   <button data-page="contact">Kontak</button>
 </nav>
@@ -168,25 +206,26 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
   <section class="hero">
     <div>
       <span class="tag"><i></i> Terbuka untuk peluang baru</span>
-      <h1>Halo, saya <span class="grad">Lucky Denis</span></h1>
-      <p class="lead">Saya berfokus pada pengembangan diri dan karya yang tidak hanya bermanfaat, tetapi juga menghadirkan pengalaman yang berkesan dan berdampak.</p> <!-- GANTI deskripsi -->
+      <h1>Halo, saya <span class="grad">Lucky Denis Saputra</span></h1>
+      <p class="lead">Psychology undergraduate specializing in Industrial &amp; Organizational Psychology, with hands-on experience in Human Resources, Learning &amp; Development, Talent Acquisition, and Organizational Development.</p>
       <div class="role" id="role"></div>
       <div class="cta">
         <button class="btn primary" onclick="go('contact')">Hubungi Saya →</button>
-        <button class="btn" onclick="go('gallery')">Lihat Pencapaian</button>
+        <button class="btn" onclick="go('experience')">Lihat Pengalaman</button>
+        <a class="btn" href="cv-lucky-denis.pdf" target="_blank" rel="noopener">Unduh CV ↓</a>
       </div>
       <div class="socials">
         <a href="https://www.linkedin.com/in/lucky-denis-b1a312287" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
         <a href="https://www.instagram.com/luckydennis_" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
-        <a href="mailto:emailkamu@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a> <!-- GANTI email -->
+        <a href="mailto:denislucky2@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
       </div>
     </div>
 
     <div class="portrait">
       <div class="halo"></div>
-      <div class="frame"><img src="foto-formal.jpg" alt="Foto formal Lucky Denis"></div>
-      <div class="chip c1">✦ Profesional</div>
-      <div class="chip c2">✦ Berdampak</div>
+      <div class="frame"><img src="foto-formal.jpg" alt="Foto formal Lucky Denis Saputra"></div>
+      <div class="chip c1">✦ IPK 3.99</div>
+      <div class="chip c2">✦ I/O Psychology</div>
     </div>
   </section>
 </main>
@@ -196,56 +235,105 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
   <span class="eyebrow">Tentang Saya</span>
   <h2 class="title">Mengenal lebih dekat</h2>
   <div class="about">
-    <div class="photo"><img src="foto-duduk.jpg" alt="Lucky Denis"></div>
+    <div class="photo"><img src="foto-duduk.jpg" alt="Lucky Denis Saputra"></div>
     <div>
-      <p>Halo! Saya Lucky Denis. Tuliskan perkenalan singkat tentang dirimu di sini: latar belakang pendidikan, minat, dan hal yang kamu kejar saat ini.</p> <!-- GANTI -->
-      <p>Tambahkan paragraf kedua tentang pengalaman, nilai yang kamu pegang, atau tujuan kariermu.</p> <!-- GANTI -->
+      <p>Psychology undergraduate specializing in Industrial and Organizational Psychology with hands-on experience in Human Resources, Learning &amp; Development, Talent Acquisition, Organizational Development, training facilitation, and academic administration.</p>
+      <p>Experienced in supporting recruitment processes, training administration, candidate coordination, workload analysis, job description development, and program planning. Strong communication, coordination, public speaking, problem-solving, and stakeholder collaboration skills.</p>
+
       <div class="stats">
-        <div class="stat"><b>3+</b><span>Tahun Pengalaman</span></div> <!-- GANTI -->
-        <div class="stat"><b>10+</b><span>Proyek</span></div> <!-- GANTI -->
-        <div class="stat"><b>5+</b><span>Penghargaan</span></div> <!-- GANTI -->
+        <div class="stat"><b>3.99</b><span>IPK Psikologi</span></div>
+        <div class="stat"><b>250+</b><span>Mahasiswa magang dikelola</span></div>
+        <div class="stat"><b>450+</b><span>Mahasiswa didampingi sebagai asisten</span></div>
+        <div class="stat"><b>30+</b><span>Perusahaan mitra</span></div>
       </div>
-      <div class="skills">
-        <span>Komunikasi</span><span>Kepemimpinan</span><span>Analisis</span><span>Kerja Tim</span><span>Public Speaking</span> <!-- GANTI skill -->
+
+      <h3 class="sub">Skills</h3>
+      <div id="skills"></div>
+
+      <h3 class="sub">Pendidikan</h3>
+      <div class="edu">
+        <div><small>2023 – Sekarang</small><h4>Bachelor of Psychology</h4><p>Universitas Kristen Satya Wacana · IPK 3.99 · Concentration: Industrial and Organizational Psychology</p></div>
+        <div><small>2020 – 2023</small><h4>Vocational High School – Tourism</h4><p>SMK Negeri 01 Bawen · Specialization: Hospitality</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ HALAMAN 3: PENCAPAIAN / GALERI ============ -->
+<!-- ============ HALAMAN 3: PENGALAMAN ============ -->
+<section class="page" id="experience">
+  <span class="eyebrow">Pengalaman</span>
+  <h2 class="title">Perjalanan profesional</h2>
+
+  <!-- KOTAK KHUSUS SIDO MUNCUL -->
+  <div class="box">
+    <span class="badge">2026 · Magang</span>
+    <h3>Internship Human Resources at PT Industri Jamu dan Farmasi Sido Muncul Tbk.</h3>
+    <p class="meta">Human Resource Development · tiga posisi dalam satu program magang</p>
+    <div class="subgrid">
+      <div class="pos">
+        <div class="num">A</div><h4>Talent Acquisition</h4>
+        <ul class="pts">
+          <li>Supported the end-to-end recruitment process, including candidate administration, screening, and interview coordination.</li>
+          <li>Managed interview scheduling and coordinated with candidates and relevant stakeholders.</li>
+          <li>Assisted in candidate data management and recruitment administration throughout the selection process.</li>
+        </ul>
+      </div>
+      <div class="pos">
+        <div class="num">B</div><h4>Learning and Development</h4>
+        <ul class="pts">
+          <li>Supported the planning, implementation, and administration of training and employee development programs.</li>
+          <li>Consolidated and managed training data to support administrative needs and program evaluation.</li>
+          <li>Assisted in preparing training requirements, materials, and documentation for employee development activities.</li>
+        </ul>
+      </div>
+      <div class="pos">
+        <div class="num">C</div><h4>Organizational Development</h4>
+        <ul class="pts">
+          <li>Assisted in developing and maintaining Job Descriptions as part of role and responsibility mapping.</li>
+          <li>Supported Workload Analysis (WLA) to identify and assess workload requirements across roles or organizational units.</li>
+          <li>Assisted in collecting and processing organizational data to support organizational development initiatives.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub">Pengalaman Profesional Lainnya</h3>
+  <div id="work"></div>
+
+  <h3 class="sub">Kepemimpinan &amp; Organisasi</h3>
+  <div id="lead"></div>
+
+  <h3 class="sub">Pelatihan</h3>
+  <div id="training"></div>
+</section>
+
+<!-- ============ HALAMAN 4: PENCAPAIAN ============ -->
 <section class="page" id="gallery">
-  <span class="eyebrow">Galeri</span>
-  <h2 class="title">Pencapaian &amp; Momen</h2>
+  <span class="eyebrow">Pencapaian</span>
+  <h2 class="title">Prestasi &amp; Momen</h2>
 
   <div class="silhouette">
-    <img src="foto-siluet.jpg" alt="Siluet Lucky Denis">
+    <img src="foto-siluet.jpg" alt="Siluet Lucky Denis Saputra">
     <div class="cap">
-      <h3>Di balik setiap pencapaian, ada proses.</h3> <!-- GANTI quote -->
+      <h3>Di balik setiap pencapaian, ada proses.</h3>
       <p>Perjalanan yang membentuk siapa saya hari ini.</p>
     </div>
   </div>
 
-  <!-- Tambah foto pencapaian: salin 1 blok .item, ganti src, judul, dan keterangan -->
-  <div class="masonry">
-    <div class="item"><img src="pencapaian-1.jpg" alt="Pencapaian 1" onerror="this.style.minHeight='220px'"><div class="info"><small>2025</small><h3>Judul Pencapaian 1</h3><p>Keterangan singkat pencapaian.</p></div></div>
-    <div class="item"><img src="pencapaian-2.jpg" alt="Pencapaian 2" onerror="this.style.minHeight='300px'"><div class="info"><small>2025</small><h3>Judul Pencapaian 2</h3><p>Keterangan singkat pencapaian.</p></div></div>
-    <div class="item"><img src="pencapaian-3.jpg" alt="Pencapaian 3" onerror="this.style.minHeight='240px'"><div class="info"><small>2024</small><h3>Judul Pencapaian 3</h3><p>Keterangan singkat pencapaian.</p></div></div>
-    <div class="item"><img src="pencapaian-4.jpg" alt="Pencapaian 4" onerror="this.style.minHeight='280px'"><div class="info"><small>2024</small><h3>Judul Pencapaian 4</h3><p>Keterangan singkat pencapaian.</p></div></div>
-    <div class="item"><img src="pencapaian-5.jpg" alt="Pencapaian 5" onerror="this.style.minHeight='200px'"><div class="info"><small>2023</small><h3>Judul Pencapaian 5</h3><p>Keterangan singkat pencapaian.</p></div></div>
-    <div class="item"><img src="pencapaian-6.jpg" alt="Pencapaian 6" onerror="this.style.minHeight='260px'"><div class="info"><small>2023</small><h3>Judul Pencapaian 6</h3><p>Keterangan singkat pencapaian.</p></div></div>
-  </div>
+  <div class="filters" id="filters"></div>
+  <div class="ach" id="ach"></div>
 </section>
 
-<!-- ============ HALAMAN 4: KONTAK ============ -->
+<!-- ============ HALAMAN 5: KONTAK ============ -->
 <section class="page" id="contact">
   <span class="eyebrow">Kontak</span>
   <h2 class="title">Mari terhubung</h2>
   <div class="contact">
     <div>
-      <p>Punya peluang, pertanyaan, atau sekadar ingin menyapa? Kirim pesan lewat formulir, atau hubungi saya melalui media sosial.</p>
+      <p>Punya peluang, pertanyaan, atau sekadar ingin menyapa? Kirim pesan lewat formulir, atau hubungi saya melalui kanal di bawah.</p>
       <div class="cinfo">
-        <a href="mailto:emailkamu@gmail.com"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>emailkamu@gmail.com</a> <!-- GANTI email -->
-        <a href="https://www.linkedin.com/in/lucky-denis-b1a312287" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn: Lucky Denis</a>
+        <a href="mailto:denislucky2@gmail.com"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>denislucky2@gmail.com</a>
+        <a href="https://www.linkedin.com/in/lucky-denis-b1a312287" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn: Lucky Denis Saputra</a>
         <a href="https://www.instagram.com/luckydennis_" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>Instagram: @luckydennis_</a>
       </div>
     </div>
@@ -263,19 +351,146 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
   </div>
 </section>
 
-<footer>© <span id="yr"></span> Lucky Denis. Dibuat dengan ♥</footer>
-
+<footer>© <span id="yr"></span> Lucky Denis Saputra. All rights reserved.</footer>
 <div class="lb" id="lb"><img alt=""></div>
 
 <script>
-/* ====== PENGATURAN ====== */
-const EMAIL = "emailkamu@gmail.com";   // GANTI: email tujuan pesan
-const FORMSPREE_ID = "";               // GANTI (opsional): contoh "xyzabcde" dari formspree.io
-const ROLES = ["Mahasiswa", "Profesional Muda", "Pembelajar Seumur Hidup"]; // GANTI
+/* ================= PENGATURAN ================= */
+const EMAIL = "denislucky2@gmail.com";
+const FORMSPREE_ID = "";   // opsional: isi ID dari formspree.io agar pesan masuk langsung ke email
+const ROLES = ["Human Resources Enthusiast","Psychology Student","Learning & Development","Talent Acquisition","Organizational Development"];
 
-/* ====== NAVIGASI HALAMAN ====== */
-const pages = document.querySelectorAll('.page');
-const btns = document.querySelectorAll('#nav button');
+/* ================= DATA ================= */
+const SKILLS = [
+  ["Human Resources","Recruitment Support","CV Screening","Candidate Screening","Interview Coordination","Training Administration","Training Data Management","Job Description Development","Workload Analysis (WLA)"],
+  ["Training & Development","Training Needs Analysis (TNA)","Module Development","Training Planning","Program Development","Training Evaluation","Mentoring","Group Facilitation"],
+  ["Organizational & Project","Program Planning","Project Coordination","Stakeholder Coordination","Event Planning","Scheduling & Timeline Management"],
+  ["Psychology","Psychological Observation","Basic Assessment","SDQ","CFIT","MIR","Graphic Tests","DISC","Wartegg Test","MBTI"],
+  ["Tools","Microsoft Excel","Microsoft Word","PowerPoint","SPSS","Canva"],
+  ["Soft Skills","Interpersonal Communication","Public Speaking","Leadership","Team Coordination","Stakeholder Management","Problem-Solving","Decision-Making","Time Management","Adaptability","Attention to Detail"]
+];
+
+const WORK = [
+  {t:"Teaching Assistant – Field Learning Program", o:"Faculty of Psychology, Universitas Kristen Satya Wacana", d:"2024 – 2025", p:[
+    "Managed internship administration, documentation, partner company records, and grade recaps while coordinating with 30+ partner companies and handling internship processes for 250+ students.",
+    "Supported student internship processes from registration and placement selection to program evaluation, ensuring smooth coordination throughout the internship cycle.",
+    "Conducted internship placement screening based on students’ CVs and competencies and maintained communication with partner organizations to facilitate suitable student placements."]},
+  {t:"Teaching Assistant – Psychology Courses", o:"Faculty of Psychology, Universitas Kristen Satya Wacana", d:"2024 – 2026", p:[
+    "Supported 7 courses across 9 classes, assisting approximately 450+ students in Psychological Observation, Industrial and Organizational Psychology, Statistics, Psychological Ethics, Quantitative Methodology, Cross-Cultural Psychology, and Psychological Scale Development.",
+    "Assisted with student mentoring, class coordination, assignment evaluation, grade administration, and academic operations, ensuring smooth course delivery and student support."]},
+  {t:"Front Office Intern", o:"Louise Kienne Hotel Simpang Lima, Semarang", d:"2022 – 2023", p:[
+    "Supported front office operations, including guest check-in, check-out, reservation administration, and guest assistance, serving approximately 100–150 guests per day during peak occupancy.",
+    "Coordinated with Housekeeping and Food & Beverage departments to ensure smooth hotel operations and guest satisfaction while handling guest requests and concerns professionally."]}
+];
+
+const LEAD = [
+  {t:"Program Commission Member & Chair", o:"Badan Perwakilan Mahasiswa Fakultas, Faculty of Psychology", d:"2023 – 2026", p:[
+    "Served across three terms, including two years as a member and one year as Chair of the Program Commission.",
+    "Led the development of the Faculty Student Organization Program Guidelines (GBHPLKF) by conducting faculty interviews and collecting survey responses from 300+ students.",
+    "Compiled and reviewed student and faculty input to develop program guidelines implemented across the Faculty of Psychology, impacting approximately 500+ students across three cohorts."]},
+  {t:"Team Leader", o:"VIORA Trainers", d:"2024 – 2026", p:[
+    "Led and supported 8 training programs for children through adults, starting from Training Needs Analysis (TNA) and module development to activity design, budgeting, facilitation, and program delivery.",
+    "Designed engaging and interactive learning experiences based on identified training needs, ensuring alignment between learning objectives, activities, and participant development."]},
+  {t:"Committee Member, Psycompetition National", o:"", d:"2026", p:[
+    "Supported event operations for a national essay competition, coordinating 10 participants, conducting the selection of 5 finalists, and coordinating with 3 judges.",
+    "Prepared the event rundown and judging materials, including assessment forms and score recaps to support the evaluation and selection process."]},
+  {t:"Human Resources Development Team Member", o:"Forum Generasi Berencana Kota Salatiga", d:"2025 – 2026", p:[
+    "Supported member development initiatives focused on strengthening organizational capacity and competencies for 20 members.",
+    "Contributed to 1 recruitment cycle, screening CVs and conducting Behavioral Event Interviews (BEI) for 15 candidates.",
+    "Developed and implemented programs aligned with organizational human resource development needs, engaging 20 members."]},
+  {t:"Psychological Assessment Team Member", o:"Flourish Psychology Clinic Kota Salatiga", d:"2024 – 2025", p:[
+    "Supported school-based psychological assessment activities across 20 schools in Semarang Regency, gaining foundational experience in administering and interpreting psychological instruments, including SDQ, CFIT, MIR, and graphic tests.",
+    "Served as a Special Needs Screening Assessment Team Member, supporting the screening and assessment process for students across participating schools."]},
+  {t:"Committee Member, BPMF Farewell Party", o:"", d:"2024 – 2025", p:[
+    "Served as Event Coordinator for 2 consecutive years, organizing the annual farewell event for approximately 40 participants each year.",
+    "Managed event concepts, detailed rundowns, scheduling, and event information, while coordinating with venues and other teams to ensure smooth event execution."]},
+  {t:"Faculty Promotion Team Member", o:"Faculty of Psychology, Universitas Kristen Satya Wacana", d:"2023 – 2024", p:[
+    "Promoted the faculty through presentations, outreach, and educational activities across ±5 schools, engaging prospective students and introducing faculty programs.",
+    "Strengthened public speaking, interpersonal communication, faculty product knowledge, and educational promotion skills through direct engagement with prospective students."]},
+  {t:"Committee Member, Faculty of Psychology Anniversary Alumni Gathering", o:"", d:"2024", p:[
+    "Served as Person in Charge (PIC) for an alumni gathering with 200+ participants, developing the event concept, detailed rundown, and coordinating with the committee and alumni.",
+    "Coordinated with faculty members and lecturers to arrange the alumni campus tour schedule, ensuring smooth coordination and event execution."]},
+  {t:"New Student Orientation Facilitator", o:"Universitas Kristen Satya Wacana", d:"2024", p:[
+    "Facilitated 20 new students throughout a one-week orientation program, supporting their adaptation to the university environment and campus life.",
+    "Managed student scheduling and activity coordination, while liaising with lecturers and faculty members to ensure smooth program implementation."]},
+  {t:"Campaign Team Member, BERSedia (Berhenti Self-Diagnosis)", o:"", d:"2023", p:[
+    "Supported campaign event operations and participant coordination, contributing to the successful delivery of an event with 200+ participants."]},
+  {t:"Yearbook Project Chair", o:"SMK Negeri 1 Bawen", d:"2023", p:[
+    "Coordinated 30 committee members in planning and producing the yearbook for 500+ students across 6 study programs, collaborating with vendors, teachers, and students.",
+    "Managed photo session scheduling, consumption arrangements, and event timelines to ensure smooth yearbook production and coordination."]},
+  {t:"Staff Member", o:"Duta Kesehatan Mental Indonesia", d:"2023", p:[
+    "Supported mental health education through social media and community-based activities, disseminating information to the general public.",
+    "Developed and implemented bullying prevention programs for elementary schools, engaging approximately 30 students."]}
+];
+
+const TRAINING = [
+  {t:"Training & Leadership Program Participant", o:"Faculty of Psychology Student Leadership Development Program", d:"2024", p:[
+    "Participated in structured leadership development, group mentoring, and experiential learning activities.",
+    "Coordinated a team to implement “Mindcraft,” a development program for Forum Generasi Berencana, engaging 20 participants."]}
+];
+
+/* k: lomba | mentor | volunteer | publikasi.  Foto: pencapaian-1.jpg, pencapaian-2.jpg, ... sesuai urutan di bawah */
+const ACH = [
+  {y:2026,k:"lomba",t:"2nd Runner-Up",d:"Well-Being Information and Social Media Education National Competition"},
+  {y:2026,k:"lomba",t:"Winner, CTA (Care to Act)",d:"Faculty of Psychology Student Senate"},
+  {y:2026,k:"mentor",t:"Mentor, Critical Thinking Simulation and ARGUMIND",d:"Faculty of Psychology Student Leadership Development Program (LDKM)"},
+  {y:2025,k:"lomba",t:"1st Runner-Up, Duta Generasi Berencana",d:"Kota Salatiga"},
+  {y:2025,k:"lomba",t:"Winner, EMVI (Emotion Short Movie)",d:"Faculty of Psychology Student Senate"},
+  {y:2025,k:"lomba",t:"Top 9 Finalist, PSYCOMPETITION",d:"Universitas Kristen Satya Wacana"},
+  {y:2025,k:"lomba",t:"Top 10 Finalist, PSYCOMPILATION",d:"Universitas Kristen Maranatha"},
+  {y:2025,k:"publikasi",t:"Published Author, Jurnal Mandala",d:"“Differences in Academic Stress Between Public and Private High School Students in Salatiga.”"},
+  {y:2025,k:"mentor",t:"Mentor, ARGUMIND",d:"Faculty of Psychology Student Leadership Development Program (LDKM)"},
+  {y:2025,k:"volunteer",t:"Volunteer, Semarang Edutrip Ceria",d:"A fun educational trip with foster children at Gedong Songo"},
+  {y:2024,k:"mentor",t:"Mentor, PSYMATE & PSYGORW",d:"Faculty of Psychology"},
+  {y:2024,k:"volunteer",t:"Volunteer, The Fluid Art Craze",d:"Exploring colors with children from Rumah Pintar Mekar Harapan"},
+  {y:2024,k:"volunteer",t:"Volunteer, Building Smiles",d:"Making artistic bricks with children from Panti Asuhan Manarul Mabrur"},
+  {y:2023,k:"lomba",t:"1st Runner-Up, Duta Generasi Berencana",d:"Kecamatan Bandungan"},
+  {y:2021,k:"lomba",t:"1st Runner-Up, PBB and TUB Competition",d:"Semarang Regency"}
+];
+const KIND = {lomba:"Lomba",mentor:"Mentor",volunteer:"Volunteer",publikasi:"Publikasi"};
+const ICON = {lomba:"🏆",mentor:"🎓",volunteer:"🤝",publikasi:"📄"};
+
+/* ================= RENDER ================= */
+const $ = s => document.querySelector(s);
+
+$('#skills').innerHTML = SKILLS.map(g =>
+  `<div class="skillgroup"><h4>${g[0]}</h4><div class="skills">${g.slice(1).map(s=>`<span>${s}</span>`).join('')}</div></div>`).join('');
+
+function acc(list, openFirst){
+  return list.map((e,i) => `
+  <details ${openFirst && i===0 ? 'open':''}>
+    <summary><div><h4>${e.t}</h4>${e.o?`<small>${e.o}</small>`:''}</div><span class="date">${e.d}</span></summary>
+    <div class="body"><ul class="pts">${e.p.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+  </details>`).join('');
+}
+$('#work').innerHTML = acc(WORK, true);
+$('#lead').innerHTML = acc(LEAD, true);
+$('#training').innerHTML = acc(TRAINING, false);
+
+let filter = 'all';
+function renderAch(){
+  $('#ach').innerHTML = ACH.map((a,i) => ({...a,n:i+1})).filter(a => filter==='all' || a.k===filter).map(a => `
+    <article class="card">
+      <div class="pic"><span><b>${ICON[a.k]}</b>Foto menyusul</span>
+        <img src="pencapaian-${a.n}.jpg" alt="${a.t}" loading="lazy" onerror="this.remove()" onclick="openLb(this.src)"></div>
+      <div class="info">
+        <div class="row"><span class="yr">${a.y}</span><span class="kind">${KIND[a.k]}</span></div>
+        <h3>${a.t}</h3><p>${a.d}</p>
+      </div>
+    </article>`).join('');
+}
+$('#filters').innerHTML = [['all','Semua'],...Object.entries(KIND)].map(([k,l]) =>
+  `<button data-f="${k}" class="${k==='all'?'on':''}">${l}</button>`).join('');
+$('#filters').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  filter = b.dataset.f;
+  document.querySelectorAll('#filters button').forEach(x => x.classList.toggle('on', x===b));
+  renderAch();
+});
+renderAch();
+
+/* ================= NAVIGASI ================= */
+const pages = document.querySelectorAll('.page'), btns = document.querySelectorAll('#nav button');
 function go(id){
   pages.forEach(p => p.classList.toggle('active', p.id === id));
   btns.forEach(b => b.classList.toggle('active', b.dataset.page === id));
@@ -285,9 +500,9 @@ function go(id){
 btns.forEach(b => b.addEventListener('click', () => go(b.dataset.page)));
 if (location.hash && document.getElementById(location.hash.slice(1))) go(location.hash.slice(1));
 
-/* ====== EFEK KETIK ====== */
+/* ================= EFEK KETIK ================= */
 (function(){
-  const el = document.getElementById('role'); let i=0,j=0,del=false;
+  const el = $('#role'); let i=0,j=0,del=false;
   (function tick(){
     const w = ROLES[i];
     el.textContent = w.slice(0,j);
@@ -297,26 +512,21 @@ if (location.hash && document.getElementById(location.hash.slice(1))) go(locatio
   })();
 })();
 
-/* ====== LIGHTBOX ====== */
-const lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
-document.querySelectorAll('.item').forEach(it => it.addEventListener('click', () => {
-  lbImg.src = it.querySelector('img').src; lb.classList.add('show');
-}));
+/* ================= LIGHTBOX ================= */
+const lb = $('#lb');
+function openLb(src){ lb.querySelector('img').src = src; lb.classList.add('show'); }
 lb.addEventListener('click', () => lb.classList.remove('show'));
 
-/* ====== FORM KONTAK ====== */
-document.getElementById('form').addEventListener('submit', async e => {
+/* ================= FORM KONTAK ================= */
+$('#form').addEventListener('submit', async e => {
   e.preventDefault();
-  const f = e.target, st = document.getElementById('status');
+  const f = e.target, st = $('#status');
   const d = {name:f.name.value, email:f.email.value, message:f.message.value};
   if (FORMSPREE_ID) {
     st.textContent = 'Mengirim...';
     try {
-      const r = await fetch('https://formspree.io/f/'+FORMSPREE_ID, {
-        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(d)
-      });
-      if (r.ok) { st.textContent = '✓ Pesan terkirim. Terima kasih!'; f.reset(); }
-      else throw 0;
+      const r = await fetch('https://formspree.io/f/'+FORMSPREE_ID, {method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)});
+      if (r.ok) { st.textContent = '✓ Pesan terkirim. Terima kasih!'; f.reset(); } else throw 0;
     } catch { st.textContent = 'Gagal mengirim. Coba lagi atau kirim langsung via email.'; }
   } else {
     const sub = encodeURIComponent('Pesan dari ' + d.name + ' (portofolio)');
@@ -326,7 +536,7 @@ document.getElementById('form').addEventListener('submit', async e => {
   }
 });
 
-document.getElementById('yr').textContent = new Date().getFullYear();
+$('#yr').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
