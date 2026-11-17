@@ -1,213 +1,64 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucky Denis Saputra | Portofolio</title>
-<meta name="description" content="Portofolio Lucky Denis Saputra, mahasiswa Psikologi peminatan Industri dan Organisasi, Human Resources Enthusiast.">
-<meta name="author" content="Lucky Denis Saputra">
-<meta name="theme-color" content="#050510">
-<meta property="og:title" content="Lucky Denis Saputra | Portofolio">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#050510;--bg2:#0b0b1f;--line:#1d1d3a;--tx:#e8e8f5;--mut:#9a9ab8;--a:#7c5cff;--b:#22d3ee}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{background:var(--bg);color:var(--tx);font:400 16px/1.65 Inter,system-ui,sans-serif;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(600px 400px at 15% 5%,#7c5cff26,transparent),radial-gradient(500px 400px at 90% 30%,#22d3ee1a,transparent)}
-h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.2}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--b);outline-offset:3px}
-nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 5vw;background:#050510cc;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav b{font:700 18px 'Space Grotesk'}
-nav ul{display:flex;gap:18px;list-style:none;overflow-x:auto;white-space:nowrap}
-nav ul a{text-decoration:none;color:var(--mut);font-size:14px}
-nav ul a:hover{color:var(--tx)}
-section{padding:72px 5vw;max-width:1100px;margin:auto}
-h2{font-size:clamp(26px,4vw,36px);margin-bottom:28px}
-#home{min-height:88vh;display:flex;align-items:center;gap:48px;flex-wrap:wrap}
-.ph{width:230px;height:290px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;font:700 64px 'Space Grotesk';overflow:hidden;flex:none}
-.ph img{width:100%;height:100%;object-fit:cover}
-.hero{flex:1;min-width:260px}
-.hero h1{font-size:clamp(36px,7vw,64px);background:linear-gradient(90deg,#fff,#b9a8ff 60%,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
-.role{color:var(--b);font:500 15px 'Space Grotesk';letter-spacing:.08em;margin:10px 0 18px}
-.hero p{color:var(--mut);max-width:60ch}
-.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.btn{padding:11px 22px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-weight:500;font-size:15px}
-.btn.p{background:linear-gradient(90deg,var(--a),var(--b));color:#050510;border:0}
-.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:34px}
-.stats div{font-size:13px;color:var(--mut)}
-.stats b{display:block;font:700 28px 'Space Grotesk';color:var(--tx)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:22px}
-.card h3{font-size:17px;margin-bottom:10px}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.tags span{padding:4px 12px;border-radius:999px;background:#7c5cff1f;border:1px solid #7c5cff55;font-size:13px}
-.tl{border-left:2px solid var(--line);padding-left:26px;display:grid;gap:30px}
-.it{position:relative}
-.it::before{content:"";position:absolute;left:-33px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--a);box-shadow:0 0 0 4px var(--bg)}
-.it h3{font-size:18px}
-.it .sub{color:var(--b);font-size:14px;margin-top:2px}
-.it .dt{color:var(--mut);font-size:13px}
-.it h4{font:700 14px 'Space Grotesk';margin:14px 0 4px;color:var(--tx)}
-.it ul{margin:8px 0 0 18px;color:var(--mut);font-size:15px}
-.it li{margin-bottom:5px}
-.ach li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);list-style:none}
-.ach{padding:0!important;margin:0!important}
-.ach i{font-style:normal;color:var(--mut);flex:none}
-.sk h3{color:var(--b)}
-.ct{display:grid;gap:10px}
-.ct a{text-decoration:none;color:var(--mut)}
-.ct a:hover{color:var(--tx)}
-footer{text-align:center;padding:36px 5vw;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
-@media(max-width:600px){section{padding:56px 5vw}.ph{width:160px;height:200px;font-size:44px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
-</head>
-<body>
-<nav>
-<b>LDS</b>
-<ul>
-<li><a href="#home">Beranda</a></li><li><a href="#tentang">Tentang</a></li><li><a href="#keahlian">Keahlian</a></li><li><a href="#pengalaman">Pengalaman</a></li><li><a href="#organisasi">Organisasi</a></li><li><a href="#pelatihan">Pelatihan</a></li><li><a href="#pendidikan">Pendidikan</a></li><li><a href="#prestasi">Prestasi</a></li><li><a href="#kontak">Kontak</a></li>
-</ul>
-</nav>
+**LDS**
 
-<section id="home">
-<div class="ph"><img src="foto.jpg" alt="Foto Lucky Denis Saputra" onerror="this.remove();this.parentNode.textContent='LD'"></div>
-<div class="hero">
-<h1>Lucky Denis Saputra</h1>
-<div class="role">HUMAN RESOURCES ENTHUSIAST | PSYCHOLOGY STUDENT</div>
-<p>Psychology undergraduate specializing in Industrial and Organizational Psychology with hands-on experience in Human Resources, Learning &amp; Development, Talent Acquisition, and Organizational Development.</p>
-<div class="btns"><a class="btn p" href="#kontak">Hubungi saya</a><a class="btn" href="#pengalaman">Lihat pengalaman</a><a class="btn" href="CV_Lucky_Denis_Saputra.pdf" download>Unduh CV</a></div>
-<div class="stats"><div><b>3.99</b>IPK</div><div><b>450+</b>Students assisted</div><div><b>250+</b>Internships handled</div><div><b>30+</b>Partner companies</div></div>
-</div>
-</section>
+- [Beranda](#home)
+- [Galeri](#galeri)
+- [Tentang](#tentang)
+- [Keahlian](#keahlian)
+- [Pengalaman](#pengalaman)
+- [Organisasi](#organisasi)
+- [Pelatihan](#pelatihan)
+- [Pendidikan](#pendidikan)
+- [Prestasi](#prestasi)
+- [Kontak](#kontak)
 
-<section id="tentang">
-<h2>Tentang</h2>
-<div class="card"><p id="summary"></p></div>
-</section>
+Foto Lucky Denis Saputra
 
-<section id="keahlian">
-<h2>Keahlian</h2>
-<div class="grid sk" id="skills"></div>
-</section>
+# Lucky Denis Saputra
 
-<section id="pengalaman">
-<h2>Pengalaman Profesional</h2>
-<div class="tl" id="exp"></div>
-</section>
+HUMAN RESOURCES ENTHUSIAST | PSYCHOLOGY STUDENT
 
-<section id="organisasi">
-<h2>Kepemimpinan &amp; Organisasi</h2>
-<div class="tl" id="org"></div>
-</section>
+Psychology undergraduate specializing in Industrial and Organizational Psychology with hands-on experience in Human Resources, Learning & Development, Talent Acquisition, and Organizational Development.
 
-<section id="pelatihan">
-<h2>Pelatihan</h2>
-<div class="tl" id="trn"></div>
-</section>
+[Hubungi saya](#kontak)[Lihat pengalaman](#pengalaman)[LinkedIn](https://www.linkedin.com/in/lucky-denis-b1a312287)[Instagram](https://www.instagram.com/luckydennis_)
 
-<section id="pendidikan">
-<h2>Pendidikan</h2>
-<div class="tl" id="edu"></div>
-</section>
+**3.99**IPK
 
-<section id="prestasi">
-<h2>Prestasi</h2>
-<div class="card"><ul class="ach" id="ach"></ul></div>
-</section>
+**450+**Students assisted
 
-<section id="kontak">
-<h2>Kontak</h2>
-<div class="card ct">
-<span>KAB. Semarang</span>
-<a href="tel:+6285641566293">0856-4156-6293</a>
-<a href="mailto:denislucky2@gmail.com">denislucky2@gmail.com</a>
-<a href="mailto:802023264@student.uksw.edu">802023264@student.uksw.edu</a>
-<a href="https://www.linkedin.com/in/Luckysaputra" target="_blank" rel="noopener">LinkedIn: @Luckysaputra</a>
-</div>
-</section>
+**250+**Internships handled
 
-<footer>&copy; 2026 Lucky Denis Saputra</footer>
+**30+**Partner companies
 
-<script>
-const summary="Psychology undergraduate specializing in Industrial and Organizational Psychology with hands-on experience in Human Resources, Learning & Development, Talent Acquisition, Organizational Development, training facilitation, and academic administration. Experienced in supporting recruitment processes, training administration, candidate coordination, workload analysis, job description development, and program planning. Strong communication, coordination, public speaking, problem-solving, and stakeholder collaboration skills.";
+## Galeri
 
-const skills=[
-["Human Resources",["Recruitment Support","CV Screening","Candidate Screening","Interview Coordination","Training Administration","Training Data Management","Job Description Development","Workload Analysis (WLA)"]],
-["Training & Development",["Training Needs Analysis (TNA)","Module Development","Training Planning","Program Development","Training Evaluation","Mentoring","Group Facilitation"]],
-["Organizational & Project",["Program Planning","Project Coordination","Stakeholder Coordination","Event Planning","Scheduling & Timeline Management"]],
-["Psychology",["Psychological Observation & Basic Assessment","SDQ","CFIT","MIR","Graphic Tests","DISC","Wartegg Test","MBTI"]],
-["Tools",["Microsoft Excel","Microsoft Word","PowerPoint","SPSS","Canva"]],
-["Soft Skills",["Interpersonal Communication","Public Speaking","Leadership","Team Coordination","Stakeholder Management","Problem-Solving","Decision-Making","Time Management","Adaptability","Attention to Detail"]]
-];
+Lucky Denis Saputra tersenyum dengan tangan bersilang
 
-// [judul, sub, tanggal, bullets] atau bullets bergrup: [[subjudul,[bullets]],...]
-const exp=[
-["Human Resource Development","PT Industri Jamu Dan Farmasi Sido Muncul Tbk.","2026",[
-["A. Learning and Development",["Supported the planning, implementation, and administration of training and employee development programs.","Consolidated and managed training data to support administrative needs and program evaluation.","Assisted in preparing training requirements, materials, and documentation for employee development activities."]],
-["B. Talent Acquisition",["Supported the end-to-end recruitment process, including candidate administration, screening, and interview coordination.","Managed interview scheduling and coordinated with candidates and relevant stakeholders.","Assisted in candidate data management and recruitment administration throughout the selection process."]],
-["C. Organizational Development",["Assisted in developing and maintaining Job Descriptions as part of role and responsibility mapping.","Supported Workload Analysis (WLA) to identify and assess workload requirements across roles or organizational units.","Assisted in collecting and processing organizational data to support organizational development initiatives."]]]],
-["Teaching Assistant – Field Learning Program","Faculty of Psychology, Universitas Kristen Satya Wacana","2024 - 2025",["Managed internship administration, documentation, partner company records, and grade recaps while coordinating with 30+ partner companies and handling internship processes for 250+ students.","Supported student internship processes from registration and placement selection to program evaluation, ensuring smooth coordination throughout the internship cycle.","Conducted internship placement screening based on students’ CVs and competencies and maintained communication with partner organizations to facilitate suitable student placements."]],
-["Teaching Assistant – Psychology Courses","Faculty of Psychology, Universitas Kristen Satya Wacana","2024 – 2026",["Supported 7 courses across 9 classes, assisting approximately 450+ students in Psychological Observation, Industrial and Organizational Psychology, Statistics, Psychological Ethics, Quantitative Methodology, Cross-Cultural Psychology, and Psychological Scale Development.","Assisted with student mentoring, class coordination, assignment evaluation, grade administration, and academic operations, ensuring smooth course delivery and student support."]],
-["Front Office Intern","Louise Kienne Hotel Simpang Lima, Semarang","2022 - 2023",["Supported front office operations, including guest check-in, check-out, reservation administration, and guest assistance, serving approximately 100-150 guests per day during peak occupancy.","Coordinated with Housekeeping and Food & Beverage departments to ensure smooth hotel operations and guest satisfaction while handling guest requests and concerns professionally."]]
-];
+Profesional
 
-const org=[
-["Program Commission Member & Chair","Badan Perwakilan Mahasiswa Fakultas, Faculty of Psychology","2023 - 2026",["Served across three terms, including two years as a member and one year as Chair of the Program Commission.","Led the development of the Faculty Student Organization Program Guidelines (GBHPLKF) by conducting faculty interviews and collecting survey responses from 300+ students.","Compiled and reviewed student and faculty input to develop program guidelines implemented across the Faculty of Psychology, impacting approximately 500+ students across three cohorts."]],
-["Team Leader","VIORA Trainers","2024 - 2026",["Led and supported 8 training programs for children through adults, starting from Training Needs Analysis (TNA) and module development to activity design, budgeting, facilitation, and program delivery.","Designed engaging and interactive learning experiences based on identified training needs, ensuring alignment between learning objectives, activities, and participant development."]],
-["Commite Member, Psycompetition National","","2026",["Supported event operations for a national essay competition, coordinating 10 participants, conducting the selection of 5 finalists, and coordinating with 3 judges.","Prepared the event rundown and judging materials, including assessment forms and score recaps to support the evaluation and selection process."]],
-["Human Resources Development Team Member","Forum Generasi Berencana Kota Salatiga","2025 - 2026",["Supported member development initiatives focused on strengthening organizational capacity and competencies for 20 members.","Contributed to 1 recruitment cycle, screening CVs and conducting Behavioral Event Interviews (BEI) for 15 candidates.","Developed and implemented programs aligned with organizational human resource development needs, engaging 20 members."]],
-["Psychological Assessment Team Member","Flourish Psychology Clinic Kota Salatiga","2024 - 2025",["Supported school-based psychological assessment activities across 20 schools in Semarang Regency, gaining foundational experience in administering and interpreting psychological instruments, including SDQ, CFIT, MIR, and graphic tests.","Served as a Special Needs Screening Assessment Team Member, supporting the screening and assessment process for students across participating schools."]],
-["Committee Member, BPMF Farewell Party","","2024-2025",["Served as Event Coordinator for 2 consecutive years, organizing the annual farewell event for approximately 40 participants each year.","Managed event concepts, detailed rundowns, scheduling, and event information, while coordinating with venues and other teams to ensure smooth event execution."]],
-["Faculty Promotion Team Member","Faculty of Psychology, Universitas Kristen Satya Wacana","2023 - 2024",["Promoted the faculty through presentations, outreach, and educational activities across ±5 schools, engaging prospective students and introducing faculty programs.","Strengthened public speaking, interpersonal communication, faculty product knowledge, and educational promotion skills through direct engagement with prospective students."]],
-["Committee Member, Faculty of Psychology Anniversary Alumni Gathering","","2024",["Served as Person in Charge (PIC) for an alumni gathering with 200+ participants, developing the event concept, detailed rundown, and coordinating with the committee and alumni.","Coordinated with faculty members and lecturers to arrange the alumni campus tour schedule, ensuring smooth coordination and event execution."]],
-["New Student Orientation Facilitator","Universitas Kristen Satya Wacana","2024",["Facilitated 20 new students throughout a one-week orientation program, supporting their adaptation to the university environment and campus life.","Managed student scheduling and activity coordination, while liaising with lecturers and faculty members to ensure smooth program implementation."]],
-["Campaign Team Member, BERSedia (Berhenti Self-Diagnosis / Stop Self-Diagnosis)","","2023",["Supported campaign event operations and participant coordination, contributing to the successful delivery of an event with 200+ participants."]],
-["Yearbook Project Chair","SMK Negeri 1 Bawen","2023",["Coordinated 30 committee members in planning and producing the yearbook for 500+ students across 6 study programs, collaborating with vendors, teachers, and students.","Managed photo session scheduling, consumption arrangements, and event timelines to ensure smooth yearbook production and coordination."]],
-["Staff Member","Duta Kesehatan Mental Indonesia","2023",["Supported mental health education through social media and community-based activities, disseminating information to the general public.","Developed and implemented bullying prevention programs for elementary schools, engaging approximately 30 students."]]
-];
+Lucky Denis Saputra menoleh dengan tenang
 
-const trn=[["Training & Leadership Program Participant","Faculty of Psychology Student Leadership Development Program","2024",["Participated in structured leadership development, group mentoring, and experiential learning activities.","Coordinated a team to implement “Mindcraft,” a development program for Forum Generasi Berencana, engaging 20 participants."]]];
+Fokus
 
-const edu=[
-["Bachelor of Psychology","Universitas Kristen Satya Wacana","2023 - Now",["IPK: 3.99","Concentration: Industrial and Organizational Psychology"]],
-["Vocational High School – Tourism","SMK Negeri 01 Bawen","2020 - 2023",["Specialization: Hospitality"]]
-];
+Siluet Lucky Denis Saputra duduk di atas kotak
 
-const ach=[
-["2nd Runner-Up, Well-Being Information and Social Media Education National Competition","2026"],
-["Winner, CTA (Care to Act), Faculty of Psychology Student Senate","2026"],
-["Mentor, Critical Thinking Simulation and ARGUMIND, Faculty of Psychology Student Leadership Development Program (LDKM)","2026"],
-["1st Runner-Up, Duta Generasi Berencana Kota Salatiga","2025"],
-["Winner, EMVI (Emotion Short Movie), Faculty of Psychology Student Senate","2025"],
-["Top 9 Finalist, PSYCOMPETITION, Universitas Kristen Satya Wacana","2025"],
-["Top 10 Finalist, PSYCOMPILATION, Universitas Kristen Maranatha","2025"],
-["Published Author, Jurnal Mandala: “Differences in Academic Stress Between Public and Private High School Students in Salatiga.”","2025"],
-["Mentor, ARGUMIND, Faculty of Psychology Student Leadership Development Program (LDKM)","2025"],
-["Volunteer, Semarang Edutrip Ceria: A Fun Educational Trip with Foster Children at Gedong Songo","2025"],
-["Mentor, PSYMATE, PSYGORW, Faculty of Psychology","2024"],
-["Volunteer, The Fluid Art Craze: Exploring Colors with Children from Rumah Pintar Mekar Harapan","2024"],
-["Volunteer, Building Smiles: Making Artistic Bricks with Children from Panti Asuhan Manarul Mabrur","2024"],
-["1st Runner-Up, Duta Generasi Berencana Kecamatan Bandungan","2023"],
-["1st Runner-Up, PBB and TUB Competition, Semarang Regency","2021"]
-];
+Siluet
 
-const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-const ul=a=>"<ul>"+a.map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>";
-const tl=(id,list)=>{document.getElementById(id).innerHTML=list.map(([t,s,d,b])=>{
- const grouped=Array.isArray(b[0]);
- const body=grouped?b.map(([h,l])=>"<h4>"+esc(h)+"</h4>"+ul(l)).join(""):ul(b);
- return '<div class="it"><h3>'+esc(t)+'</h3>'+(s?'<div class="sub">'+esc(s)+'</div>':'')+'<div class="dt">'+esc(d)+'</div>'+body+'</div>';}).join("");};
+## Tentang
 
-document.getElementById("summary").textContent=summary;
-document.getElementById("skills").innerHTML=skills.map(([h,l])=>'<div class="card"><h3>'+esc(h)+'</h3><div class="tags">'+l.map(x=>"<span>"+esc(x)+"</span>").join("")+"</div></div>").join("");
-tl("exp",exp);tl("org",org);tl("trn",trn);tl("edu",edu);
-document.getElementById("ach").innerHTML=ach.map(([t,y])=>"<li><span>"+esc(t)+"</span><i>"+y+"</i></li>").join("");
-</script>
-</body>
-</html>
+## Keahlian
+
+## Pengalaman Profesional
+
+## Kepemimpinan & Organisasi
+
+## Pelatihan
+
+## Pendidikan
+
+## Prestasi
+
+## Kontak
+
+KAB. Semarang 0856-4156-6293 [denislucky2@gmail.com](mailto:denislucky2@gmail.com) [802023264@student.uksw.edu](mailto:802023264@student.uksw.edu) [LinkedIn: Lucky Denis](https://www.linkedin.com/in/lucky-denis-b1a312287) [Instagram: @luckydennis\_](https://www.instagram.com/luckydennis_)
+
+© 2026 Lucky Denis Saputra
