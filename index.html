@@ -13,15 +13,23 @@
 =====================================================
  CARA PAKAI
  1. Taruh foto di folder yang SAMA dengan index.html:
-      foto-formal.jpg   -> halaman Beranda (foto berdiri tangan menyilang)
+      foto-hero.png     -> Beranda (foto badan, latar sudah dihapus / transparan)
       foto-duduk.jpg    -> halaman Tentang
-      foto-siluet.jpg   -> halaman Pencapaian
-      pencapaian-1.jpg, pencapaian-2.jpg, ... pencapaian-15.jpg
-        -> foto tiap pencapaian sesuai urutan di daftar (belum ada = tampil kotak "Foto menyusul")
+      foto-siluet.jpg   -> slide pertama banner halaman Pencapaian
+      pencapaian-1.jpg ... pencapaian-15.jpg
+        -> foto tiap pencapaian sesuai urutan di daftar ACH (belum ada = "Foto menyusul").
+           Foto yang ada otomatis ikut berganti-ganti di banner paling atas halaman Pencapaian.
+      edu-1-1.jpg, edu-1-2.jpg   -> foto Pendidikan ke-1 (Universitas)
+      edu-2-1.jpg, edu-2-2.jpg   -> foto Pendidikan ke-2 (SMK)
+        (jumlah foto per pendidikan diatur lewat angka n di daftar EDU)
+      skill-1.jpg ... skill-6.jpg -> foto tiap kategori skill (belum ada = pakai foto-duduk.jpg)
+      exp-1.jpg, exp-2.jpg, ...   -> foto tiap amplop pengalaman sesuai urutan kemunculannya
  2. (Opsional) Tombol "Unduh CV": taruh file PDF bernama cv-lucky-denis.pdf di folder yang sama.
- 3. Form kontak: isi FORMSPREE_ID di bagian script (gratis di formspree.io)
-    agar pesan masuk langsung ke emailmu. Kosong = membuka aplikasi email (mailto).
- 4. Semua data (pengalaman, pencapaian) ada di bagian <script> paling bawah, mudah diedit.
+ 3. Form kontak: memakai FormSubmit (gratis, tanpa daftar). Saat PERTAMA kali ada yang mengirim,
+    FormSubmit mengirim email aktivasi ke denislucky2@gmail.com: klik tautan konfirmasinya sekali.
+    Setelah itu semua pesan langsung masuk ke emailmu. Form hanya berfungsi di situs online
+    (GitHub Pages), bukan saat file dibuka langsung dari komputer.
+ 4. Semua data (pengalaman, pencapaian, terjemahan) ada di bagian <script> paling bawah.
 =====================================================
 -->
 
@@ -50,21 +58,28 @@ nav button{background:none;border:0;color:var(--muted);font:500 .9rem 'Inter',sa
 nav button:hover{color:var(--text)}
 nav button.active{background:var(--white);color:#0a0a1a}
 
+/* PILIHAN BAHASA (pojok kanan atas) */
+.lang{position:fixed;top:16px;right:18px;z-index:60;display:flex;gap:4px;padding:6px;background:rgba(10,10,30,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px}
+.lang button{background:none;border:0;color:var(--muted);font:600 .8rem 'Inter',sans-serif;padding:9px 13px;border-radius:999px;cursor:pointer;transition:.25s;letter-spacing:.04em}
+.lang button:hover{color:var(--text)}
+.lang button.on{background:var(--white);color:#0a0a1a}
+
 .page{display:none;min-height:100vh;padding:110px 6vw 80px;max-width:1280px;margin:0 auto;animation:in .6s ease}
 .page.active{display:block}
 @keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
 /* HERO */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:4vw;align-items:center;min-height:calc(100vh - 190px)}
+.hero{display:grid;grid-template-columns:1fr minmax(300px,430px) 1fr;gap:3vw;align-items:center;min-height:calc(100vh - 190px)}
+.hero-l,.hero-r{display:flex;flex-direction:column;align-items:flex-start}
 .tag{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--muted);background:var(--card)}
 .tag i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e}
-.hero h1{font-size:clamp(2.6rem,6.4vw,5.2rem);margin:22px 0 18px;letter-spacing:-.03em}
+.hero h1{font-size:clamp(2.2rem,4.4vw,3.8rem);margin:22px 0 18px;letter-spacing:-.03em}
 .grad{background:linear-gradient(90deg,var(--white),var(--a2) 50%,var(--a1));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lead{color:var(--muted);font-size:1.08rem;max-width:540px}
+.hero p.lead{color:var(--muted);font-size:1.02rem;max-width:540px}
 .role{margin-top:14px;font-weight:500;color:var(--a2);min-height:1.6em}
 .role::after{content:"|";margin-left:2px;animation:blink 1s infinite}
 @keyframes blink{50%{opacity:0}}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid var(--line);cursor:pointer;transition:.3s;background:var(--card);color:var(--text);font-family:inherit}
 .btn:hover{transform:translateY(-3px);border-color:var(--white)}
 .btn.primary{background:var(--white);color:#0a0a1a;border-color:var(--white)}
@@ -74,17 +89,18 @@ nav button.active{background:var(--white);color:#0a0a1a}
 .socials a:hover{background:var(--white);color:#0a0a1a;transform:translateY(-4px);box-shadow:0 0 28px rgba(255,255,255,.4)}
 .socials svg,.cinfo svg{width:20px;height:20px;fill:currentColor}
 
-.portrait{position:relative;display:grid;place-items:center}
-.portrait .halo{position:absolute;width:92%;aspect-ratio:3/4;border-radius:50% 50% 46% 46%;background:radial-gradient(closest-side,rgba(255,255,255,.55),rgba(255,255,255,.12) 60%,transparent 75%);filter:blur(34px);animation:pulse 5s ease-in-out infinite}
-@keyframes pulse{50%{opacity:.6;transform:scale(1.06)}}
-.portrait .frame{position:relative;width:min(100%,430px);aspect-ratio:3/4;border-radius:28px;overflow:hidden;
-  box-shadow:0 0 0 1.5px rgba(255,255,255,.9),0 0 22px 2px rgba(255,255,255,.75),0 0 90px 12px rgba(255,255,255,.28);transition:transform .5s}
-.portrait .frame:hover{transform:scale(1.02) rotate(-.6deg)}
-.portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.portrait .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(5,5,16,.55));pointer-events:none}
-.portrait .chip{position:absolute;padding:10px 16px;border-radius:14px;background:rgba(10,10,30,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);font-size:.82rem;font-weight:500;animation:bob 6s ease-in-out infinite}
-.portrait .chip.c1{top:10%;left:-4%}
-.portrait .chip.c2{bottom:12%;right:-4%;animation-delay:-3s}
+/* FOTO BADAN TANPA KOTAK + SILUET PUTIH BERGERAK */
+.portrait{position:relative;display:grid;place-items:end center}
+.portrait .cut{position:relative;width:min(100%,400px);aspect-ratio:677/1078}
+.portrait .halo{position:absolute;left:50%;top:46%;width:130%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.4),rgba(255,255,255,.08) 60%,transparent 75%);filter:blur(30px);animation:pulse 5s ease-in-out infinite;pointer-events:none}
+@keyframes pulse{50%{opacity:.55;transform:translate(-50%,-50%) scale(1.08)}}
+.portrait .sil{position:absolute;inset:0;transform:scale(1.07);transform-origin:50% 60%;background:linear-gradient(105deg,rgba(255,255,255,.15) 0%,#fff 28%,rgba(255,255,255,.2) 50%,#fff 72%,rgba(255,255,255,.15) 100%);background-size:260% 100%;-webkit-mask:url("foto-hero.png") center/100% 100% no-repeat;mask:url("foto-hero.png") center/100% 100% no-repeat;filter:blur(5px) drop-shadow(0 0 22px rgba(255,255,255,.85));animation:sweep 4.2s linear infinite,breathe 3.6s ease-in-out infinite}
+@keyframes sweep{to{background-position:-260% 0}}
+@keyframes breathe{50%{transform:scale(1.11)}}
+.portrait .body{position:relative;width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 18px 40px rgba(0,0,0,.45))}
+.portrait .chip{position:absolute;padding:10px 16px;border-radius:14px;background:rgba(10,10,30,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);font-size:.82rem;font-weight:500;animation:bob 6s ease-in-out infinite;z-index:2}
+.portrait .chip.c1{top:14%;left:-6%}
+.portrait .chip.c2{bottom:16%;right:-6%;animation-delay:-3s}
 @keyframes bob{50%{transform:translateY(-10px)}}
 
 .eyebrow{color:var(--a2);font-weight:600;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase}
@@ -101,22 +117,53 @@ nav button.active{background:var(--white);color:#0a0a1a}
 .stat{padding:18px 10px;border-radius:18px;background:var(--card);border:1px solid var(--line);text-align:center}
 .stat b{font:700 1.7rem 'Space Grotesk';display:block}
 .stat span{font-size:.74rem;color:var(--muted);line-height:1.3;display:block}
-.skillgroup{margin-bottom:18px}
-.skillgroup h4{font-size:.95rem;margin-bottom:10px}
 .skills{display:flex;flex-wrap:wrap;gap:8px}
 .skills span{padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:.84rem}
 .edu{display:grid;gap:12px}
-.edu div{padding:18px 20px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.edu>div{padding:18px 20px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
 .edu small{color:var(--a2);font-weight:600}
 .edu h4{font-size:1.05rem;margin:4px 0}
 .edu p{margin:0;font-size:.9rem}
+.edu .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:14px}
+.edu .gal .pic{border-radius:14px;aspect-ratio:4/3}
 
-/* EXPERIENCE */
-.box{position:relative;border-radius:28px;padding:34px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.35);box-shadow:0 0 50px rgba(255,255,255,.08),inset 0 0 40px rgba(255,255,255,.03)}
-.box .badge{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--white);color:#0a0a1a;font-size:.78rem;font-weight:700;margin-bottom:14px}
-.box h3{font-size:clamp(1.4rem,2.8vw,2.1rem);letter-spacing:-.01em}
-.box .meta{color:var(--muted);margin:8px 0 26px}
+/* KATEGORI SKILL (tombol + isi + foto) */
+.skillbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.skillbtns button{padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font:500 .88rem 'Inter';cursor:pointer;transition:.25s}
+.skillbtns button:hover{color:var(--text);border-color:rgba(255,255,255,.45)}
+.skillbtns button.on{background:var(--white);color:#0a0a1a;border-color:var(--white)}
+.skillpanel{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:20px;border-radius:22px;background:var(--card);border:1px solid var(--line);animation:in .45s ease}
+.skillpanel .pic{border-radius:16px;aspect-ratio:3/4}
+.skillpanel h4{font-size:1.1rem;margin-bottom:12px}
+
+/* EXPERIENCE: AMPLOP */
+.hint{color:var(--muted);font-size:.9rem;margin:-6px 0 22px}
+.envs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.env{position:relative;height:170px;cursor:pointer;perspective:900px;outline:none;transition:transform .35s}
+.env::before{content:"";position:absolute;inset:0;border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid var(--line);transition:.35s}
+.env:hover::before,.env:focus-visible::before,.env.open::before{border-color:var(--white);box-shadow:0 0 40px rgba(255,255,255,.14)}
+.env:hover,.env:focus-visible{transform:translateY(-6px)}
+.env .flap{position:absolute;left:1px;right:1px;top:1px;height:62%;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.07));clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .55s cubic-bezier(.3,.7,.2,1);border-radius:16px 16px 0 0}
+.env:hover .flap,.env:focus-visible .flap,.env.open .flap{transform:rotateX(180deg)}
+.env .seal{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:.95rem;transition:.4s;z-index:2}
+.env:hover .seal,.env:focus-visible .seal,.env.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.4)}
+.env .lbl{position:absolute;left:16px;right:16px;bottom:14px;z-index:1}
+.env .lbl h4{font-size:.98rem;margin:2px 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.env .lbl small{display:block;font-size:.76rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.env .lbl small.d{color:var(--a2);font-weight:600}
+.env.big{grid-column:1/-1;height:200px}
+.env.big::before{border-color:rgba(255,255,255,.35);box-shadow:0 0 50px rgba(255,255,255,.08)}
+.env.big .lbl h4{font-size:1.25rem}
+.lt{position:fixed;inset:0;z-index:90;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow:auto}
+.lt.show{display:grid}
+.paper{position:relative;width:100%;max-width:980px;max-height:90vh;overflow:auto;border-radius:26px;padding:34px;background:linear-gradient(160deg,#171738,#0b0b22);border:1px solid rgba(255,255,255,.35);box-shadow:0 0 70px rgba(255,255,255,.1);animation:letter .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes letter{from{opacity:0;transform:translateY(70px) scale(.94)}to{opacity:1;transform:none}}
+.paper .x{position:absolute;top:14px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:1.3rem;cursor:pointer}
+.paper .x:hover{background:var(--white);color:#0a0a1a}
+.paper .badge{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--white);color:#0a0a1a;font-size:.78rem;font-weight:700;margin-bottom:14px}
+.paper h3{font-size:clamp(1.3rem,2.6vw,1.9rem);padding-right:40px}
+.paper .meta{color:var(--muted);margin:8px 0 20px}
+.paper .pic{border-radius:18px;aspect-ratio:16/7;margin-bottom:22px}
 .subgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pos{padding:24px;border-radius:20px;background:rgba(5,5,16,.6);border:1px solid var(--line);transition:.35s}
 .pos:hover{border-color:var(--white);transform:translateY(-6px);box-shadow:0 0 40px rgba(255,255,255,.12)}
@@ -125,33 +172,30 @@ nav button.active{background:var(--white);color:#0a0a1a}
 ul.pts{list-style:none}
 ul.pts li{position:relative;padding-left:18px;margin-bottom:9px;font-size:.9rem;color:var(--muted)}
 ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--a2)}
-details{border-radius:18px;border:1px solid var(--line);background:var(--card);margin-bottom:12px;transition:.3s}
-details[open],details:hover{border-color:rgba(255,255,255,.45)}
-summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-size:1.4rem;color:var(--a2);transition:.3s;flex:none}
-details[open] summary::after{transform:rotate(45deg)}
-summary h4{font-size:1.05rem}
-summary small{display:block;color:var(--muted);font-family:'Inter';font-weight:400;font-size:.84rem;margin-top:2px}
-summary .date{font-size:.8rem;color:var(--a2);white-space:nowrap;font-weight:600}
-details .body{padding:0 22px 20px}
+
+/* FOTO / PLACEHOLDER UMUM */
+.pic{background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(34,211,238,.15));display:grid;place-items:center;color:var(--muted);font-size:.8rem;position:relative;overflow:hidden}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.pic span{text-align:center;padding:10px}
+.pic span b{display:block;font-size:1.8rem;margin-bottom:4px}
 
 /* ACHIEVEMENTS */
-.silhouette{position:relative;border-radius:28px;overflow:hidden;margin-bottom:34px;border:1px solid var(--line)}
-.silhouette img{width:100%;height:min(66vh,600px);object-fit:cover;object-position:center 45%;display:block}
-.silhouette .cap{position:absolute;left:0;right:0;bottom:0;padding:50px 28px 26px;background:linear-gradient(transparent,rgba(5,5,16,.92))}
+.silhouette{position:relative;border-radius:28px;overflow:hidden;margin-bottom:34px;border:1px solid var(--line);height:min(66vh,600px);background:#0b0b22}
+.silhouette img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;opacity:0;transition:opacity 1.2s ease}
+.silhouette img.on{opacity:1}
+.silhouette .cap{position:absolute;left:0;right:0;bottom:0;padding:50px 28px 26px;background:linear-gradient(transparent,rgba(5,5,16,.92));z-index:2}
 .silhouette .cap h3{font-size:clamp(1.4rem,3vw,2.2rem)}
 .silhouette .cap p{color:var(--muted)}
+.dots{position:absolute;top:16px;right:18px;display:flex;gap:6px;z-index:2}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);transition:.3s}
+.dots i.on{background:#fff;width:20px;border-radius:6px}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 .filters button{padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font:500 .86rem 'Inter';cursor:pointer;transition:.25s}
 .filters button.on,.filters button:hover{background:var(--white);color:#0a0a1a;border-color:var(--white)}
 .ach{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
 .card{border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:.4s;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-6px);box-shadow:0 0 0 1px rgba(255,255,255,.7),0 20px 60px rgba(255,255,255,.12)}
-.card .pic{aspect-ratio:16/10;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(34,211,238,.15));display:grid;place-items:center;color:var(--muted);font-size:.82rem;position:relative;overflow:hidden}
-.card .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in}
-.card .pic span{text-align:center;padding:10px}
-.card .pic span b{display:block;font-size:1.8rem;margin-bottom:4px}
+.card .pic{aspect-ratio:16/10}
 .card .info{padding:18px 20px 22px}
 .card .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .card .yr{color:var(--a2);font-weight:700;font-size:.85rem}
@@ -173,46 +217,71 @@ label{display:block;font-size:.82rem;color:var(--muted);margin:0 0 6px 2px}
 input,textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font:inherit;margin-bottom:18px;outline:none;transition:.25s}
 input:focus,textarea:focus{border-color:var(--white);box-shadow:0 0 0 3px rgba(255,255,255,.12)}
 textarea{min-height:140px;resize:vertical}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
 #status{margin-top:14px;font-size:.9rem;min-height:1.2em}
 footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px}
 
 @media(max-width:900px){
+  nav{left:12px;transform:none;max-width:calc(100vw - 130px)}
+  .lang{right:12px}
   .hero,.about,.contact,.subgrid{grid-template-columns:1fr}
-  .hero{text-align:center;padding-top:10px}
+  .hero{text-align:center;padding-top:10px;gap:22px}
+  .hero-l,.hero-r{align-items:center}
   .hero p.lead{margin:0 auto}
   .cta,.socials{justify-content:center}
-  .portrait{order:-1;margin-bottom:10px}
-  .portrait .frame{width:min(78%,360px)}
-  .portrait .chip.c1{left:2%}.portrait .chip.c2{right:2%}
+  .portrait{order:-1}
+  .portrait .cut{width:min(78%,340px)}
+  .portrait .chip.c1{left:-2%}.portrait .chip.c2{right:-2%}
   .about .photo{position:static}
   .stats{grid-template-columns:repeat(2,1fr)}
-  .box{padding:22px}
+  .skillpanel{grid-template-columns:1fr}
+  .skillpanel .pic{aspect-ratio:16/9}
+  .paper{padding:24px 20px}
 }
+@media(prefers-reduced-motion:reduce){.portrait .sil,.portrait .halo,.portrait .chip{animation:none}}
 </style>
 </head>
 <body>
 <div class="bg"></div><div class="grid"></div>
 
 <nav id="nav">
-  <button class="active" data-page="home">Beranda</button>
-  <button data-page="about">Tentang</button>
-  <button data-page="experience">Pengalaman</button>
-  <button data-page="gallery">Pencapaian</button>
-  <button data-page="contact">Kontak</button>
+  <button class="active" data-page="home" data-i="nav_home">Beranda</button>
+  <button data-page="about" data-i="nav_about">Tentang</button>
+  <button data-page="experience" data-i="nav_exp">Pengalaman</button>
+  <button data-page="gallery" data-i="nav_ach">Pencapaian</button>
+  <button data-page="contact" data-i="nav_contact">Kontak</button>
 </nav>
+
+<div class="lang" id="lang" role="group" aria-label="Language">
+  <button data-l="id" class="on">ID</button>
+  <button data-l="en">EN</button>
+</div>
 
 <!-- ============ HALAMAN 1: BERANDA ============ -->
 <main class="page active" id="home">
   <section class="hero">
-    <div>
-      <span class="tag"><i></i> Terbuka untuk peluang baru</span>
-      <h1>Halo, saya <span class="grad">Lucky Denis Saputra</span></h1>
-      <p class="lead">Psychology undergraduate specializing in Industrial &amp; Organizational Psychology, with hands-on experience in Human Resources, Learning &amp; Development, Talent Acquisition, and Organizational Development.</p>
+    <div class="hero-l">
+      <span class="tag"><i></i> <span data-i="tag">Terbuka untuk peluang baru</span></span>
+      <h1 data-i="h1">Halo, saya <span class="grad">Lucky Denis Saputra</span></h1>
       <div class="role" id="role"></div>
+    </div>
+
+    <div class="portrait">
+      <div class="cut">
+        <div class="halo"></div>
+        <div class="sil"></div>
+        <img class="body" src="foto-hero.png" alt="Lucky Denis Saputra">
+        <div class="chip c1" data-i="chip1">✦ IPK 3.99</div>
+        <div class="chip c2">✦ I/O Psychology</div>
+      </div>
+    </div>
+
+    <div class="hero-r">
+      <p class="lead" data-i="lead">Psychology undergraduate specializing in Industrial &amp; Organizational Psychology, with hands-on experience in Human Resources, Learning &amp; Development, Talent Acquisition, and Organizational Development.</p>
       <div class="cta">
-        <button class="btn primary" onclick="go('contact')">Hubungi Saya →</button>
-        <button class="btn" onclick="go('experience')">Lihat Pengalaman</button>
-        <a class="btn" href="cv-lucky-denis.pdf" target="_blank" rel="noopener">Unduh CV ↓</a>
+        <button class="btn primary" onclick="go('contact')" data-i="cta1">Hubungi Saya →</button>
+        <button class="btn" onclick="go('experience')" data-i="cta2">Lihat Pengalaman</button>
+        <a class="btn" href="cv-lucky-denis.pdf" target="_blank" rel="noopener" data-i="cta3">Unduh CV ↓</a>
       </div>
       <div class="socials">
         <a href="https://www.linkedin.com/in/lucky-denis-b1a312287" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
@@ -220,103 +289,66 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
         <a href="mailto:denislucky2@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
       </div>
     </div>
-
-    <div class="portrait">
-      <div class="halo"></div>
-      <div class="frame"><img src="foto-formal.jpg" alt="Foto formal Lucky Denis Saputra"></div>
-      <div class="chip c1">✦ IPK 3.99</div>
-      <div class="chip c2">✦ I/O Psychology</div>
-    </div>
   </section>
 </main>
 
 <!-- ============ HALAMAN 2: TENTANG ============ -->
 <section class="page" id="about">
-  <span class="eyebrow">Tentang Saya</span>
-  <h2 class="title">Mengenal lebih dekat</h2>
+  <span class="eyebrow" data-i="about_eye">Tentang Saya</span>
+  <h2 class="title" data-i="about_title">Mengenal lebih dekat</h2>
   <div class="about">
     <div class="photo"><img src="foto-duduk.jpg" alt="Lucky Denis Saputra"></div>
     <div>
-      <p>Psychology undergraduate specializing in Industrial and Organizational Psychology with hands-on experience in Human Resources, Learning &amp; Development, Talent Acquisition, Organizational Development, training facilitation, and academic administration.</p>
-      <p>Experienced in supporting recruitment processes, training administration, candidate coordination, workload analysis, job description development, and program planning. Strong communication, coordination, public speaking, problem-solving, and stakeholder collaboration skills.</p>
+      <p data-i="about_p1">Psychology undergraduate specializing in Industrial and Organizational Psychology with hands-on experience in Human Resources, Learning &amp; Development, Talent Acquisition, Organizational Development, training facilitation, and academic administration.</p>
+      <p data-i="about_p2">Experienced in supporting recruitment processes, training administration, candidate coordination, workload analysis, job description development, and program planning. Strong communication, coordination, public speaking, problem-solving, and stakeholder collaboration skills.</p>
 
       <div class="stats">
-        <div class="stat"><b>3.99</b><span>IPK Psikologi</span></div>
-        <div class="stat"><b>250+</b><span>Mahasiswa magang dikelola</span></div>
-        <div class="stat"><b>450+</b><span>Mahasiswa didampingi sebagai asisten</span></div>
-        <div class="stat"><b>30+</b><span>Perusahaan mitra</span></div>
+        <div class="stat"><b>3.99</b><span data-i="st1">IPK Psikologi</span></div>
+        <div class="stat"><b>250+</b><span data-i="st2">Mahasiswa magang dikelola</span></div>
+        <div class="stat"><b>450+</b><span data-i="st3">Mahasiswa didampingi sebagai asisten</span></div>
+        <div class="stat"><b>30+</b><span data-i="st4">Perusahaan mitra</span></div>
       </div>
+
+      <h3 class="sub" data-i="edu_h">Pendidikan</h3>
+      <div class="edu" id="edu"></div>
 
       <h3 class="sub">Skills</h3>
-      <div id="skills"></div>
-
-      <h3 class="sub">Pendidikan</h3>
-      <div class="edu">
-        <div><small>2023 – Sekarang</small><h4>Bachelor of Psychology</h4><p>Universitas Kristen Satya Wacana · IPK 3.99 · Concentration: Industrial and Organizational Psychology</p></div>
-        <div><small>2020 – 2023</small><h4>Vocational High School – Tourism</h4><p>SMK Negeri 01 Bawen · Specialization: Hospitality</p></div>
-      </div>
+      <div class="skillbtns" id="skillbtns"></div>
+      <div id="skillpanel"></div>
     </div>
   </div>
 </section>
 
 <!-- ============ HALAMAN 3: PENGALAMAN ============ -->
 <section class="page" id="experience">
-  <span class="eyebrow">Pengalaman</span>
-  <h2 class="title">Perjalanan profesional</h2>
+  <span class="eyebrow" data-i="exp_eye">Pengalaman</span>
+  <h2 class="title" data-i="exp_title">Perjalanan profesional</h2>
+  <p class="hint" data-i="hint">Klik amplop untuk membuka penjabaran dan fotonya.</p>
 
-  <!-- KOTAK KHUSUS SIDO MUNCUL -->
-  <div class="box">
-    <span class="badge">2026 · Magang</span>
-    <h3>Internship Human Resources at PT Industri Jamu dan Farmasi Sido Muncul Tbk.</h3>
-    <p class="meta">Human Resource Development · tiga posisi dalam satu program magang</p>
-    <div class="subgrid">
-      <div class="pos">
-        <div class="num">A</div><h4>Talent Acquisition</h4>
-        <ul class="pts">
-          <li>Supported the end-to-end recruitment process, including candidate administration, screening, and interview coordination.</li>
-          <li>Managed interview scheduling and coordinated with candidates and relevant stakeholders.</li>
-          <li>Assisted in candidate data management and recruitment administration throughout the selection process.</li>
-        </ul>
-      </div>
-      <div class="pos">
-        <div class="num">B</div><h4>Learning and Development</h4>
-        <ul class="pts">
-          <li>Supported the planning, implementation, and administration of training and employee development programs.</li>
-          <li>Consolidated and managed training data to support administrative needs and program evaluation.</li>
-          <li>Assisted in preparing training requirements, materials, and documentation for employee development activities.</li>
-        </ul>
-      </div>
-      <div class="pos">
-        <div class="num">C</div><h4>Organizational Development</h4>
-        <ul class="pts">
-          <li>Assisted in developing and maintaining Job Descriptions as part of role and responsibility mapping.</li>
-          <li>Supported Workload Analysis (WLA) to identify and assess workload requirements across roles or organizational units.</li>
-          <li>Assisted in collecting and processing organizational data to support organizational development initiatives.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <div class="envs" id="env-sido"></div>
 
-  <h3 class="sub">Pengalaman Profesional Lainnya</h3>
-  <div id="work"></div>
+  <h3 class="sub" data-i="work_h">Pengalaman Profesional Lainnya</h3>
+  <div class="envs" id="env-work"></div>
 
-  <h3 class="sub">Kepemimpinan &amp; Organisasi</h3>
-  <div id="lead"></div>
+  <h3 class="sub" data-i="lead_h">Kepemimpinan &amp; Organisasi</h3>
+  <div class="envs" id="env-lead"></div>
 
-  <h3 class="sub">Pelatihan</h3>
-  <div id="training"></div>
+  <h3 class="sub" data-i="train_h">Pelatihan</h3>
+  <div class="envs" id="env-train"></div>
 </section>
 
 <!-- ============ HALAMAN 4: PENCAPAIAN ============ -->
 <section class="page" id="gallery">
-  <span class="eyebrow">Pencapaian</span>
-  <h2 class="title">Prestasi &amp; Momen</h2>
+  <span class="eyebrow" data-i="ach_eye">Pencapaian</span>
+  <h2 class="title" data-i="ach_title">Prestasi &amp; Momen</h2>
 
-  <div class="silhouette">
-    <img src="foto-siluet.jpg" alt="Siluet Lucky Denis Saputra">
+  <div class="silhouette" id="hero-slides">
+    <img class="on" src="foto-siluet.jpg" alt="Siluet Lucky Denis Saputra">
+    <img alt="">
+    <div class="dots" id="dots"></div>
     <div class="cap">
-      <h3>Di balik setiap pencapaian, ada proses.</h3>
-      <p>Perjalanan yang membentuk siapa saya hari ini.</p>
+      <h3 id="cap-h"></h3>
+      <p id="cap-p"></p>
     </div>
   </div>
 
@@ -326,11 +358,11 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
 
 <!-- ============ HALAMAN 5: KONTAK ============ -->
 <section class="page" id="contact">
-  <span class="eyebrow">Kontak</span>
-  <h2 class="title">Mari terhubung</h2>
+  <span class="eyebrow" data-i="ct_eye">Kontak</span>
+  <h2 class="title" data-i="ct_title">Mari terhubung</h2>
   <div class="contact">
     <div>
-      <p>Punya peluang, pertanyaan, atau sekadar ingin menyapa? Kirim pesan lewat formulir, atau hubungi saya melalui kanal di bawah.</p>
+      <p data-i="ct_p">Punya peluang, pertanyaan, atau sekadar ingin menyapa? Kirim pesan lewat formulir, atau hubungi saya melalui kanal di bawah.</p>
       <div class="cinfo">
         <a href="mailto:denislucky2@gmail.com"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>denislucky2@gmail.com</a>
         <a href="https://www.linkedin.com/in/lucky-denis-b1a312287" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn: Lucky Denis Saputra</a>
@@ -339,26 +371,87 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
     </div>
 
     <form id="form">
-      <label for="name">Nama</label>
-      <input id="name" name="name" required placeholder="Nama lengkap">
+      <label for="name" data-i="f_name">Nama</label>
+      <input id="name" name="name" required data-ph="f_name_ph" placeholder="Nama lengkap">
       <label for="email">Email</label>
       <input id="email" name="email" type="email" required placeholder="email@kamu.com">
-      <label for="message">Pesan</label>
-      <textarea id="message" name="message" required placeholder="Tulis pesanmu di sini..."></textarea>
-      <button class="btn primary" type="submit">Kirim Pesan ✈</button>
-      <div id="status"></div>
+      <label for="message" data-i="f_msg">Pesan</label>
+      <textarea id="message" name="message" required data-ph="f_msg_ph" placeholder="Tulis pesanmu di sini..."></textarea>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn primary" type="submit" id="sendbtn" data-i="f_send">Kirim Pesan ✈</button>
+      <div id="status" role="status"></div>
     </form>
   </div>
 </section>
 
-<footer>© <span id="yr"></span> Lucky Denis Saputra. All rights reserved.</footer>
+<footer>© <span id="yr"></span> Lucky Denis Saputra. <span data-i="rights">All rights reserved.</span></footer>
 <div class="lb" id="lb"><img alt=""></div>
+<div class="lt" id="lt"></div>
 
 <script>
 /* ================= PENGATURAN ================= */
 const EMAIL = "denislucky2@gmail.com";
-const FORMSPREE_ID = "";   // opsional: isi ID dari formspree.io agar pesan masuk langsung ke email
-const ROLES = ["Human Resources Enthusiast","Psychology Student","Learning & Development","Talent Acquisition","Organizational Development"];
+const FORMSPREE_ID = "";   // opsional: isi ID dari formspree.io jika ingin memakai Formspree. Kosong = FormSubmit (langsung ke email)
+
+/* ================= TERJEMAHAN (ID / EN) ================= */
+const T = {
+id:{
+ nav_home:"Beranda",nav_about:"Tentang",nav_exp:"Pengalaman",nav_ach:"Pencapaian",nav_contact:"Kontak",
+ tag:"Terbuka untuk peluang baru",
+ h1:'Halo, saya <span class="grad">Lucky Denis Saputra</span>',
+ chip1:"✦ IPK 3.99",
+ lead:"Mahasiswa sarjana Psikologi peminatan Psikologi Industri & Organisasi, dengan pengalaman langsung di Human Resources, Learning & Development, Talent Acquisition, dan Organizational Development.",
+ cta1:"Hubungi Saya →",cta2:"Lihat Pengalaman",cta3:"Unduh CV ↓",
+ about_eye:"Tentang Saya",about_title:"Mengenal lebih dekat",
+ about_p1:"Mahasiswa sarjana Psikologi peminatan Psikologi Industri dan Organisasi dengan pengalaman langsung di Human Resources, Learning & Development, Talent Acquisition, Organizational Development, fasilitasi pelatihan, dan administrasi akademik.",
+ about_p2:"Berpengalaman mendukung proses rekrutmen, administrasi pelatihan, koordinasi kandidat, analisis beban kerja, penyusunan job description, dan perencanaan program. Memiliki kemampuan komunikasi, koordinasi, public speaking, pemecahan masalah, dan kolaborasi dengan pemangku kepentingan yang kuat.",
+ st1:"IPK Psikologi",st2:"Mahasiswa magang dikelola",st3:"Mahasiswa didampingi sebagai asisten",st4:"Perusahaan mitra",
+ edu_h:"Pendidikan",gpa:"IPK",
+ exp_eye:"Pengalaman",exp_title:"Perjalanan profesional",
+ hint:"Klik amplop untuk membuka penjabaran dan fotonya.",
+ work_h:"Pengalaman Profesional Lainnya",lead_h:"Kepemimpinan & Organisasi",train_h:"Pelatihan",
+ sido_badge:"2026 · Magang",sido_meta:"Human Resource Development · tiga posisi dalam satu program magang",
+ ach_eye:"Pencapaian",ach_title:"Prestasi & Momen",
+ cap_h:"Di balik setiap pencapaian, ada proses.",cap_p:"Perjalanan yang membentuk siapa saya hari ini.",
+ all:"Semua",lomba:"Lomba",mentor:"Mentor",volunteer:"Volunteer",publikasi:"Publikasi",
+ soon:"Foto menyusul",
+ ct_eye:"Kontak",ct_title:"Mari terhubung",
+ ct_p:"Punya peluang, pertanyaan, atau sekadar ingin menyapa? Kirim pesan lewat formulir, atau hubungi saya melalui kanal di bawah.",
+ f_name:"Nama",f_name_ph:"Nama lengkap",f_msg:"Pesan",f_msg_ph:"Tulis pesanmu di sini...",f_send:"Kirim Pesan ✈",
+ sending:"Mengirim...",sent:"✓ Pesan terkirim langsung ke email saya. Terima kasih!",
+ fail:"Gagal mengirim. Coba lagi, atau kirim langsung ke ",rights:"All rights reserved.",
+ roles:["Human Resources Enthusiast","Mahasiswa Psikologi","Learning & Development","Talent Acquisition","Organizational Development"]
+},
+en:{
+ nav_home:"Home",nav_about:"About",nav_exp:"Experience",nav_ach:"Achievements",nav_contact:"Contact",
+ tag:"Open to new opportunities",
+ h1:'Hi, I am <span class="grad">Lucky Denis Saputra</span>',
+ chip1:"✦ GPA 3.99",
+ lead:"Psychology undergraduate specializing in Industrial & Organizational Psychology, with hands-on experience in Human Resources, Learning & Development, Talent Acquisition, and Organizational Development.",
+ cta1:"Contact Me →",cta2:"View Experience",cta3:"Download CV ↓",
+ about_eye:"About Me",about_title:"Getting to know me",
+ about_p1:"Psychology undergraduate specializing in Industrial and Organizational Psychology with hands-on experience in Human Resources, Learning & Development, Talent Acquisition, Organizational Development, training facilitation, and academic administration.",
+ about_p2:"Experienced in supporting recruitment processes, training administration, candidate coordination, workload analysis, job description development, and program planning. Strong communication, coordination, public speaking, problem-solving, and stakeholder collaboration skills.",
+ st1:"Psychology GPA",st2:"Internship students managed",st3:"Students assisted as teaching assistant",st4:"Partner companies",
+ edu_h:"Education",gpa:"GPA",
+ exp_eye:"Experience",exp_title:"Professional journey",
+ hint:"Click an envelope to open the details and photos.",
+ work_h:"Other Professional Experience",lead_h:"Leadership & Organization",train_h:"Training",
+ sido_badge:"2026 · Internship",sido_meta:"Human Resource Development · three roles in one internship program",
+ ach_eye:"Achievements",ach_title:"Awards & Moments",
+ cap_h:"Behind every achievement, there is a process.",cap_p:"The journey that shaped who I am today.",
+ all:"All",lomba:"Competition",mentor:"Mentor",volunteer:"Volunteer",publikasi:"Publication",
+ soon:"Photo coming soon",
+ ct_eye:"Contact",ct_title:"Let's connect",
+ ct_p:"Have an opportunity, a question, or just want to say hi? Send a message through the form, or reach me through the channels below.",
+ f_name:"Name",f_name_ph:"Full name",f_msg:"Message",f_msg_ph:"Write your message here...",f_send:"Send Message ✈",
+ sending:"Sending...",sent:"✓ Message sent straight to my email. Thank you!",
+ fail:"Failed to send. Please try again, or email directly to ",rights:"All rights reserved.",
+ roles:["Human Resources Enthusiast","Psychology Student","Learning & Development","Talent Acquisition","Organizational Development"]
+}};
+let lang = "id";
+try{ const s=localStorage.getItem("lang"); if(s==="id"||s==="en") lang=s; }catch(e){}
+const tr = k => T[lang][k];
 
 /* ================= DATA ================= */
 const SKILLS = [
@@ -369,6 +462,27 @@ const SKILLS = [
   ["Tools","Microsoft Excel","Microsoft Word","PowerPoint","SPSS","Canva"],
   ["Soft Skills","Interpersonal Communication","Public Speaking","Leadership","Team Coordination","Stakeholder Management","Problem-Solving","Decision-Making","Time Management","Adaptability","Attention to Detail"]
 ];
+
+/* n = jumlah foto per pendidikan (edu-1-1.jpg, edu-1-2.jpg, ...). Ubah angkanya sesuai jumlah fotomu. */
+const EDU = [
+  {d:{id:"2023 – Sekarang",en:"2023 – Present"},t:"Bachelor of Psychology",o:"Universitas Kristen Satya Wacana",extra:true,n:2},
+  {d:{id:"2020 – 2023",en:"2020 – 2023"},t:"Vocational High School – Tourism",o:"SMK Negeri 01 Bawen · Specialization: Hospitality",n:2}
+];
+
+const SIDO = {t:"Internship Human Resources at PT Industri Jamu dan Farmasi Sido Muncul Tbk.", d:"2026", pos:[
+  {n:"A",h:"Talent Acquisition",p:[
+    "Supported the end-to-end recruitment process, including candidate administration, screening, and interview coordination.",
+    "Managed interview scheduling and coordinated with candidates and relevant stakeholders.",
+    "Assisted in candidate data management and recruitment administration throughout the selection process."]},
+  {n:"B",h:"Learning and Development",p:[
+    "Supported the planning, implementation, and administration of training and employee development programs.",
+    "Consolidated and managed training data to support administrative needs and program evaluation.",
+    "Assisted in preparing training requirements, materials, and documentation for employee development activities."]},
+  {n:"C",h:"Organizational Development",p:[
+    "Assisted in developing and maintaining Job Descriptions as part of role and responsibility mapping.",
+    "Supported Workload Analysis (WLA) to identify and assess workload requirements across roles or organizational units.",
+    "Assisted in collecting and processing organizational data to support organizational development initiatives."]}
+]};
 
 const WORK = [
   {t:"Teaching Assistant – Field Learning Program", o:"Faculty of Psychology, Universitas Kristen Satya Wacana", d:"2024 – 2025", p:[
@@ -447,96 +561,176 @@ const ACH = [
   {y:2023,k:"lomba",t:"1st Runner-Up, Duta Generasi Berencana",d:"Kecamatan Bandungan"},
   {y:2021,k:"lomba",t:"1st Runner-Up, PBB and TUB Competition",d:"Semarang Regency"}
 ];
-const KIND = {lomba:"Lomba",mentor:"Mentor",volunteer:"Volunteer",publikasi:"Publikasi"};
 const ICON = {lomba:"🏆",mentor:"🎓",volunteer:"🤝",publikasi:"📄"};
+const KINDS = ["lomba","mentor","volunteer","publikasi"];
+
+/* ================= UTIL ================= */
+const $ = s => document.querySelector(s);
+const pic = (src, icon) => `<div class="pic"><span><b>${icon||"📷"}</b>${tr("soon")}</span><img src="${src}" alt="" loading="lazy" onerror="this.remove()" onclick="openLb(this.src)"></div>`;
 
 /* ================= RENDER ================= */
-const $ = s => document.querySelector(s);
+let activeSkill = 0, filter = "all";
 
-$('#skills').innerHTML = SKILLS.map(g =>
-  `<div class="skillgroup"><h4>${g[0]}</h4><div class="skills">${g.slice(1).map(s=>`<span>${s}</span>`).join('')}</div></div>`).join('');
-
-function acc(list, openFirst){
-  return list.map((e,i) => `
-  <details ${openFirst && i===0 ? 'open':''}>
-    <summary><div><h4>${e.t}</h4>${e.o?`<small>${e.o}</small>`:''}</div><span class="date">${e.d}</span></summary>
-    <div class="body"><ul class="pts">${e.p.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-  </details>`).join('');
+function renderEdu(){
+  $("#edu").innerHTML = EDU.map((e,i) => {
+    const photos = Array.from({length:e.n||0},(_,j)=>pic(`edu-${i+1}-${j+1}.jpg`,"🎓")).join("");
+    const sub = e.extra ? `${e.o} · ${tr("gpa")} 3.99 · Concentration: Industrial and Organizational Psychology` : e.o;
+    return `<div><small>${e.d[lang]}</small><h4>${e.t}</h4><p>${sub}</p>${photos?`<div class="gal">${photos}</div>`:""}</div>`;
+  }).join("");
 }
-$('#work').innerHTML = acc(WORK, true);
-$('#lead').innerHTML = acc(LEAD, true);
-$('#training').innerHTML = acc(TRAINING, false);
 
-let filter = 'all';
+function renderSkills(){
+  $("#skillbtns").innerHTML = SKILLS.map((g,i)=>`<button data-s="${i}" class="${i===activeSkill?"on":""}">${g[0]}</button>`).join("");
+  const g = SKILLS[activeSkill];
+  $("#skillpanel").innerHTML = `<div class="skillpanel"><div class="pic"><span><b>📷</b>${tr("soon")}</span><img src="skill-${activeSkill+1}.jpg" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='foto-duduk.jpg'}else{this.remove()}" onclick="openLb(this.src)"></div><div><h4>${g[0]}</h4><div class="skills">${g.slice(1).map(s=>`<span>${s}</span>`).join("")}</div></div></div>`;
+}
+$("#skillbtns").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;activeSkill=+b.dataset.s;renderSkills();});
+
+/* Daftar amplop: id berurutan = nomor foto exp-N.jpg */
+const ENTRIES = [{id:1,sido:true,...SIDO}];
+let _id = 1;
+[...WORK,...LEAD,...TRAINING].forEach(e => ENTRIES.push({id:++_id,...e}));
+const env = (e,big) => `<div class="env ${big?"big":""}" data-id="${e.id}" tabindex="0" role="button"><div class="flap"></div><div class="seal">✉</div><div class="lbl"><small class="d">${e.d}</small><h4>${e.t}</h4>${e.sido?`<small>${tr("sido_meta")}</small>`:(e.o?`<small>${e.o}</small>`:"")}</div></div>`;
+function renderEnv(){
+  const by = (a,b) => ENTRIES.filter(e=>e.id>=a&&e.id<=b).map(e=>env(e,e.sido)).join("");
+  const w=WORK.length, l=LEAD.length;
+  $("#env-sido").innerHTML = by(1,1);
+  $("#env-work").innerHTML = by(2,1+w);
+  $("#env-lead").innerHTML = by(2+w,1+w+l);
+  $("#env-train").innerHTML = by(2+w+l,99);
+}
+function openLetter(id){
+  const e = ENTRIES.find(x=>x.id===id); if(!e) return;
+  const body = e.sido
+    ? `<div class="subgrid">${e.pos.map(p=>`<div class="pos"><div class="num">${p.n}</div><h4>${p.h}</h4><ul class="pts">${p.p.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>`
+    : `<ul class="pts">${e.p.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  const head = e.sido ? `<span class="badge">${tr("sido_badge")}</span>` : `<span class="badge">${e.d}</span>`;
+  const meta = e.sido ? tr("sido_meta") : e.o;
+  $("#lt").innerHTML = `<div class="paper" role="dialog" aria-modal="true"><button class="x" aria-label="Close">×</button>${head}<h3>${e.t}</h3>${meta?`<p class="meta">${meta}</p>`:""}${pic(`exp-${e.id}.jpg`,"💼")}${body}</div>`;
+  $("#lt").classList.add("show");
+}
+function closeLetter(){
+  $("#lt").classList.remove("show");
+  document.querySelectorAll(".env.open").forEach(x=>x.classList.remove("open"));
+}
+$("#experience").addEventListener("click",e=>{
+  const el = e.target.closest(".env"); if(!el) return;
+  el.classList.add("open");
+  setTimeout(()=>openLetter(+el.dataset.id),420);
+});
+$("#experience").addEventListener("keydown",e=>{
+  if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("env")){e.preventDefault();e.target.click();}
+});
+$("#lt").addEventListener("click",e=>{ if(e.target.id==="lt"||e.target.closest(".x")) closeLetter(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){closeLetter();lb.classList.remove("show");} });
+
 function renderAch(){
-  $('#ach').innerHTML = ACH.map((a,i) => ({...a,n:i+1})).filter(a => filter==='all' || a.k===filter).map(a => `
+  $("#ach").innerHTML = ACH.map((a,i)=>({...a,n:i+1})).filter(a=>filter==="all"||a.k===filter).map(a=>`
     <article class="card">
-      <div class="pic"><span><b>${ICON[a.k]}</b>Foto menyusul</span>
-        <img src="pencapaian-${a.n}.jpg" alt="${a.t}" loading="lazy" onerror="this.remove()" onclick="openLb(this.src)"></div>
+      ${pic(`pencapaian-${a.n}.jpg`,ICON[a.k])}
       <div class="info">
-        <div class="row"><span class="yr">${a.y}</span><span class="kind">${KIND[a.k]}</span></div>
+        <div class="row"><span class="yr">${a.y}</span><span class="kind">${tr(a.k)}</span></div>
         <h3>${a.t}</h3><p>${a.d}</p>
       </div>
-    </article>`).join('');
+    </article>`).join("");
 }
-$('#filters').innerHTML = [['all','Semua'],...Object.entries(KIND)].map(([k,l]) =>
-  `<button data-f="${k}" class="${k==='all'?'on':''}">${l}</button>`).join('');
-$('#filters').addEventListener('click', e => {
-  const b = e.target.closest('button'); if(!b) return;
-  filter = b.dataset.f;
-  document.querySelectorAll('#filters button').forEach(x => x.classList.toggle('on', x===b));
-  renderAch();
+function renderFilters(){
+  $("#filters").innerHTML = [["all",tr("all")],...KINDS.map(k=>[k,tr(k)])].map(([k,l])=>`<button data-f="${k}" class="${k===filter?"on":""}">${l}</button>`).join("");
+}
+$("#filters").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;filter=b.dataset.f;renderFilters();renderAch();});
+
+/* ================= BANNER BERGANTI-GANTI (foto pencapaian) ================= */
+let slides = [{src:"foto-siluet.jpg",h:null,p:null}], si = 0, slideTimer = null, front = 0;
+const sImgs = () => document.querySelectorAll("#hero-slides img");
+function drawCaption(){
+  const s = slides[si];
+  if(s.h===null){ $("#cap-h").textContent = tr("cap_h"); $("#cap-p").textContent = tr("cap_p"); }
+  else { $("#cap-h").textContent = s.h; $("#cap-p").textContent = s.p; }
+  $("#dots").innerHTML = slides.length>1 ? slides.map((_,i)=>`<i class="${i===si?"on":""}"></i>`).join("") : "";
+}
+function showSlide(n){
+  si = n % slides.length;
+  const imgs = sImgs(), next = imgs[1-front];
+  next.onload = () => { imgs[front].classList.remove("on"); next.classList.add("on"); front = 1-front; };
+  next.src = slides[si].src;
+  drawCaption();
+}
+function startSlides(){
+  clearInterval(slideTimer);
+  if(slides.length>1) slideTimer = setInterval(()=>showSlide(si+1),4500);
+}
+ACH.forEach((a,i)=>{
+  const im = new Image(), src = `pencapaian-${i+1}.jpg`;
+  im.onload = () => { slides.push({src,h:a.t,p:`${a.y} · ${a.d}`}); drawCaption(); startSlides(); };
+  im.src = src;
 });
-renderAch();
+
+/* ================= BAHASA ================= */
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i]").forEach(el=>{ const v=tr(el.dataset.i); if(v!==undefined) el.innerHTML = v; });
+  document.querySelectorAll("[data-ph]").forEach(el=>{ el.placeholder = tr(el.dataset.ph); });
+  document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
+  renderEdu(); renderSkills(); renderEnv(); renderFilters(); renderAch(); drawCaption();
+  startTyping();
+}
+$("#lang").addEventListener("click",e=>{
+  const b = e.target.closest("button"); if(!b||b.dataset.l===lang) return;
+  lang = b.dataset.l; try{localStorage.setItem("lang",lang);}catch(err){}
+  applyLang();
+});
 
 /* ================= NAVIGASI ================= */
-const pages = document.querySelectorAll('.page'), btns = document.querySelectorAll('#nav button');
+const pages = document.querySelectorAll(".page"), btns = document.querySelectorAll("#nav button");
 function go(id){
-  pages.forEach(p => p.classList.toggle('active', p.id === id));
-  btns.forEach(b => b.classList.toggle('active', b.dataset.page === id));
-  window.scrollTo({top:0,behavior:'smooth'});
-  history.replaceState(null,'','#'+id);
+  pages.forEach(p => p.classList.toggle("active", p.id === id));
+  btns.forEach(b => b.classList.toggle("active", b.dataset.page === id));
+  window.scrollTo({top:0,behavior:"smooth"});
+  history.replaceState(null,"","#"+id);
 }
-btns.forEach(b => b.addEventListener('click', () => go(b.dataset.page)));
+btns.forEach(b => b.addEventListener("click", () => go(b.dataset.page)));
 if (location.hash && document.getElementById(location.hash.slice(1))) go(location.hash.slice(1));
 
 /* ================= EFEK KETIK ================= */
-(function(){
-  const el = $('#role'); let i=0,j=0,del=false;
+let typeRun = 0;
+function startTyping(){
+  const run = ++typeRun, el = $("#role"), R = tr("roles"); let i=0,j=0,del=false;
   (function tick(){
-    const w = ROLES[i];
+    if(run!==typeRun) return;
+    const w = R[i];
     el.textContent = w.slice(0,j);
     if(!del && j++ === w.length){ del=true; return setTimeout(tick,1400); }
-    if(del && j-- === 0){ del=false; i=(i+1)%ROLES.length; }
+    if(del && j-- === 0){ del=false; i=(i+1)%R.length; }
     setTimeout(tick, del?40:85);
   })();
-})();
+}
 
 /* ================= LIGHTBOX ================= */
-const lb = $('#lb');
-function openLb(src){ lb.querySelector('img').src = src; lb.classList.add('show'); }
-lb.addEventListener('click', () => lb.classList.remove('show'));
+const lb = $("#lb");
+function openLb(src){ lb.querySelector("img").src = src; lb.classList.add("show"); }
+lb.addEventListener("click", () => lb.classList.remove("show"));
 
-/* ================= FORM KONTAK ================= */
-$('#form').addEventListener('submit', async e => {
+/* ================= FORM KONTAK (langsung ke email) ================= */
+$("#form").addEventListener("submit", async e => {
   e.preventDefault();
-  const f = e.target, st = $('#status');
-  const d = {name:f.name.value, email:f.email.value, message:f.message.value};
-  if (FORMSPREE_ID) {
-    st.textContent = 'Mengirim...';
-    try {
-      const r = await fetch('https://formspree.io/f/'+FORMSPREE_ID, {method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)});
-      if (r.ok) { st.textContent = '✓ Pesan terkirim. Terima kasih!'; f.reset(); } else throw 0;
-    } catch { st.textContent = 'Gagal mengirim. Coba lagi atau kirim langsung via email.'; }
-  } else {
-    const sub = encodeURIComponent('Pesan dari ' + d.name + ' (portofolio)');
-    const body = encodeURIComponent(d.message + '\n\n— ' + d.name + '\n' + d.email);
-    location.href = `mailto:${EMAIL}?subject=${sub}&body=${body}`;
-    st.textContent = 'Membuka aplikasi emailmu...';
+  const f = e.target, st = $("#status"), btn = $("#sendbtn");
+  const d = {name:f.name.value, email:f.email.value, message:f.message.value, _honey:f._honey.value};
+  const url = FORMSPREE_ID ? "https://formspree.io/f/"+FORMSPREE_ID : "https://formsubmit.co/ajax/"+EMAIL;
+  const payload = FORMSPREE_ID ? d : {...d,_subject:"Pesan dari "+d.name+" (portofolio)",_replyto:d.email,_template:"table",_captcha:"false"};
+  st.textContent = tr("sending"); btn.disabled = true;
+  try{
+    const r = await fetch(url,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)});
+    const j = await r.json().catch(()=>({}));
+    if(r.ok && j.success!=="false" && j.success!==false){ st.textContent = tr("sent"); f.reset(); }
+    else throw 0;
+  }catch(err){
+    st.innerHTML = tr("fail")+`<a href="mailto:${EMAIL}" style="text-decoration:underline">${EMAIL}</a>`;
   }
+  btn.disabled = false;
 });
 
-$('#yr').textContent = new Date().getFullYear();
+$("#yr").textContent = new Date().getFullYear();
+applyLang();
 </script>
 </body>
 </html>
