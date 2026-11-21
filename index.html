@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070707">
-<title>Lucky Denis Saputra | Portofolio</title>
-<meta name="description" content="Portofolio Lucky Denis Saputra: Human Resources Enthusiast dan mahasiswa Psikologi (Industri dan Organisasi) Universitas Kristen Satya Wacana.">
+<meta name="theme-color" content="#000000">
+<title>Lucky Denis Saputra, S.Psi. | Portofolio</title>
+<meta name="description" content="Portofolio Lucky Denis Saputra, S.Psi.: Human Resources Enthusiast dan mahasiswa Psikologi (Industri dan Organisasi) Universitas Kristen Satya Wacana.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
@@ -14,10 +14,10 @@
  CARA PAKAI
  1. Taruh foto di folder yang SAMA dengan index.html (nama harus persis, huruf kecil, ekstensi .jpg):
       foto-hero.png    -> Beranda (foto badan, latar transparan)
-      foto-duduk.jpg   -> halaman Tentang
+      foto-duduk.jpg   -> slide pertama banner halaman Pengalaman
       foto-siluet.jpg  -> slide pertama banner halaman Pencapaian
-      edu-1-1.jpg, edu-1-2.jpg ... -> foto Pendidikan ke-1 | edu-2-1.jpg ... -> Pendidikan ke-2 (jumlah diatur angka n di daftar EDU)
-      skill-1.jpg ... skill-6.jpg  -> foto tiap kategori skill (belum ada = pakai foto-duduk.jpg)
+      edu-1.jpg, edu-1-2.jpg ... -> foto Pendidikan ke-1 (S1) | edu-2.jpg, edu-2-2.jpg ... -> Pendidikan ke-2 (SMK)
+      skill-1.jpg, skill-1-2.jpg ... skill-6.jpg -> foto tiap folder skill (1 HR, 2 T&D, 3 Org & Project, 4 Psychology, 5 Tools, 6 Soft Skills)
 
  2. FOTO DOKUMENTASI (bisa LEBIH DARI SATU foto per item):
       foto pertama : exp-5.jpg      foto kedua : exp-5-2.jpg     ketiga : exp-5-3.jpg  ... (sampai -8)
@@ -40,9 +40,9 @@
 
 <style>
 :root{
-  --bg:#070707; --text:#f2f2f2; --muted:#9b9b9b;
-  --a1:#8d8d8d; --a2:#d6d6d6; --white:#ffffff;
-  --card:rgba(255,255,255,.04); --line:rgba(255,255,255,.12);
+  --bg:#000000; --text:#ffffff; --muted:#c4c4c4;
+  --a1:#ececec; --a2:#ffffff; --white:#ffffff;
+  --card:rgba(255,255,255,.07); --line:rgba(255,255,255,.26);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -52,14 +52,14 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;line-height:1.15}
 a{color:inherit;text-decoration:none}
 
 .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
-.bg::before,.bg::after{content:"";position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(130px);opacity:.16;animation:float 18s ease-in-out infinite alternate}
+.bg::before,.bg::after{content:"";position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(130px);opacity:.1;animation:float 18s ease-in-out infinite alternate}
 .bg::before{background:#fff;top:-24vmax;left:-18vmax}
 .bg::after{background:var(--a1);bottom:-28vmax;right:-18vmax;animation-delay:-9s}
 @keyframes float{to{transform:translate(8vmax,6vmax) scale(1.15)}}
-.grid{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.22;-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%);mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%)}
+.grid{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.13;-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%);mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%)}
 
 /* INTRO */
-#intro{position:fixed;inset:0;z-index:200;background:#050505;display:grid;place-items:center;transition:opacity .9s ease,visibility .9s;cursor:pointer}
+#intro{position:fixed;inset:0;z-index:200;background:#000;display:grid;place-items:center;transition:opacity .9s ease,visibility .9s;cursor:pointer}
 #intro.hide{opacity:0;visibility:hidden}
 .iwrap{position:relative;width:min(94vw,940px);aspect-ratio:2/1;display:grid;place-items:center}
 .iwrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
@@ -67,13 +67,13 @@ a{color:inherit;text-decoration:none}
 @keyframes iw{from{opacity:0;transform:translateY(16px);letter-spacing:.08em}to{opacity:1;transform:none}}
 .skip{position:absolute;bottom:6vh;font-size:.75rem;color:var(--muted);letter-spacing:.25em;text-transform:uppercase;animation:blink 1.6s infinite}
 
-nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;padding:6px;background:rgba(14,14,14,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px;max-width:calc(100vw - 24px);overflow-x:auto;scrollbar-width:none}
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;padding:6px;background:rgba(0,0,0,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px;max-width:calc(100vw - 24px);overflow-x:auto;scrollbar-width:none}
 nav::-webkit-scrollbar{display:none}
 nav button{background:none;border:0;color:var(--muted);font:500 .9rem 'Inter',sans-serif;padding:9px 18px;border-radius:999px;cursor:pointer;transition:.25s;white-space:nowrap}
 nav button:hover{color:var(--text)}
 nav button.active{background:var(--white);color:#0a0a0a}
 
-.lang{position:fixed;top:16px;right:18px;z-index:60;display:flex;gap:4px;padding:6px;background:rgba(14,14,14,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px}
+.lang{position:fixed;top:16px;right:18px;z-index:60;display:flex;gap:4px;padding:6px;background:rgba(0,0,0,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px}
 .lang button{background:none;border:0;color:var(--muted);font:600 .8rem 'Inter',sans-serif;padding:9px 13px;border-radius:999px;cursor:pointer;transition:.25s;letter-spacing:.04em}
 .lang button:hover{color:var(--text)}
 .lang button.on{background:var(--white);color:#0a0a0a}
@@ -88,7 +88,7 @@ nav button.active{background:var(--white);color:#0a0a0a}
 .tag{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--muted);background:var(--card)}
 .tag i{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff}
 .hero h1{font-size:clamp(2.2rem,4.4vw,3.8rem);margin:22px 0 18px;letter-spacing:-.03em}
-.grad{background:linear-gradient(90deg,#fff,#c4c4c4 55%,#808080);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad{background:linear-gradient(90deg,#fff,#ececec 55%,#bdbdbd);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p.lead{color:var(--muted);font-size:1.02rem;max-width:540px}
 .role{margin-top:14px;font-weight:500;color:var(--a2);min-height:1.6em}
 .role::after{content:"|";margin-left:2px;animation:blink 1s infinite}
@@ -104,10 +104,10 @@ nav button.active{background:var(--white);color:#0a0a0a}
 .socials svg,.cinfo svg{width:20px;height:20px;fill:currentColor}
 
 /* TEKS BESAR DI BELAKANG FOTO */
-.bigword{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:0;pointer-events:none;user-select:none;white-space:nowrap;font:700 clamp(4.2rem,12.5vw,11.5rem)/.9 'Space Grotesk',sans-serif;letter-spacing:-.045em;background:linear-gradient(180deg,rgba(255,255,255,.95) 10%,rgba(255,255,255,.07) 95%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}
+.bigword{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:0;pointer-events:none;user-select:none;white-space:nowrap;font:700 clamp(4.2rem,12.5vw,11.5rem)/.9 'Space Grotesk',sans-serif;letter-spacing:-.045em;background:linear-gradient(180deg,#fff 12%,rgba(255,255,255,.2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}
 .portrait{position:relative;z-index:1;display:grid;place-items:end center}
 .portrait .cut{position:relative;width:min(100%,400px);aspect-ratio:677/1078}
-.portrait .body{position:relative;width:100%;height:100%;object-fit:contain;display:block;filter:grayscale(1) contrast(1.08) drop-shadow(0 18px 40px rgba(0,0,0,.55));-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent)}
+.portrait .body{position:relative;width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 18px 40px rgba(0,0,0,.6));-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent)}
 .portrait .chip{position:absolute;padding:10px 16px;border-radius:14px;background:rgba(14,14,14,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);font-size:.82rem;font-weight:500;animation:bob 6s ease-in-out infinite;z-index:2}
 .portrait .chip.c1{top:14%;left:-6%}
 .portrait .chip.c2{bottom:16%;right:-6%;animation-delay:-3s}
@@ -120,10 +120,8 @@ nav button.active{background:var(--white);color:#0a0a0a}
 .hint{color:var(--muted);font-size:.9rem;margin:-6px 0 26px}
 
 /* ABOUT */
-.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:5vw;align-items:start}
-.about .photo{border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.6);position:sticky;top:100px}
-.about .photo img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:center 20%}
-.about p{color:var(--muted);margin-bottom:16px;font-size:1.04rem}
+.about{display:block}
+.about p{color:var(--muted);margin-bottom:16px;font-size:1.04rem;max-width:860px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
 .stat{padding:18px 10px;border-radius:18px;background:var(--card);border:1px solid var(--line);text-align:center}
 .stat b{font:700 1.7rem 'Space Grotesk';display:block}
@@ -150,17 +148,17 @@ nav button.active{background:var(--white);color:#0a0a0a}
 .folders{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:34px 26px;padding-top:14px}
 .folder{position:relative;aspect-ratio:1.2;cursor:pointer;outline:none;transition:transform .35s}
 .folder:hover,.folder:focus-visible{transform:translateY(-8px)}
-.fback{position:absolute;left:0;right:0;top:9%;bottom:0;border-radius:6px 22px 22px 22px;background:linear-gradient(160deg,#303030,#151515);border:1px solid var(--line)}
-.fback::before{content:"";position:absolute;left:-1px;bottom:100%;width:40%;height:13%;min-height:16px;background:linear-gradient(160deg,#303030,#262626);border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0}
+.fback{position:absolute;left:0;right:0;top:9%;bottom:0;border-radius:6px 22px 22px 22px;background:linear-gradient(160deg,#262626,#0a0a0a);border:1px solid var(--line)}
+.fback::before{content:"";position:absolute;left:-1px;bottom:100%;width:40%;height:13%;min-height:16px;background:linear-gradient(160deg,#262626,#1c1c1c);border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0}
 .fpapers{position:absolute;left:9%;right:9%;top:15%;height:56%}
-.fpapers i{position:absolute;inset:0;border-radius:10px;background:linear-gradient(145deg,#3a3a3a,#1f1f1f) center/cover no-repeat;border:1px solid rgba(255,255,255,.22);box-shadow:0 8px 24px rgba(0,0,0,.55);transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+.fpapers i{position:absolute;inset:0;border-radius:10px;background:linear-gradient(145deg,#f4f4f4,#a6a6a6) center/cover no-repeat;border:1px solid rgba(255,255,255,.5);box-shadow:0 8px 24px rgba(0,0,0,.55);transition:transform .45s cubic-bezier(.3,.7,.2,1)}
 .fpapers i:nth-child(1){transform:rotate(-5deg) translateY(4%)}
 .fpapers i:nth-child(2){transform:rotate(3.5deg) translate(3%,2%)}
 .fpapers i:nth-child(3){transform:none}
 .folder:hover .fpapers i:nth-child(1),.folder:focus-visible .fpapers i:nth-child(1){transform:rotate(-9deg) translate(-4%,-16%)}
 .folder:hover .fpapers i:nth-child(2),.folder:focus-visible .fpapers i:nth-child(2){transform:rotate(7deg) translate(5%,-12%)}
 .folder:hover .fpapers i:nth-child(3),.folder:focus-visible .fpapers i:nth-child(3){transform:translateY(-20%)}
-.ffront{position:absolute;left:0;right:0;bottom:0;height:58%;border-radius:20px 20px 22px 22px;background:linear-gradient(180deg,rgba(70,70,70,.72),rgba(22,22,22,.94));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);padding:16px 20px;display:flex;flex-direction:column;justify-content:flex-end}
+.ffront{position:absolute;left:0;right:0;bottom:0;height:58%;border-radius:20px 20px 22px 22px;background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.07));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.4);padding:16px 20px;display:flex;flex-direction:column;justify-content:flex-end}
 .fcount b{font:700 2.1rem 'Space Grotesk';display:block;line-height:1}
 .fcount span{font-size:.86rem;color:var(--muted);display:block;margin-top:4px;padding-right:56px}
 .fdots{position:absolute;right:16px;bottom:16px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);display:grid;place-items:center;font-size:.8rem;letter-spacing:1px;transition:.3s}
@@ -169,7 +167,7 @@ nav button.active{background:var(--white);color:#0a0a0a}
 /* MODAL FOLDER */
 .lt{position:fixed;inset:0;z-index:90;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow:auto}
 .lt.show{display:grid}
-.paper{position:relative;width:100%;max-width:1000px;max-height:90vh;overflow:auto;border-radius:26px;padding:34px;background:linear-gradient(160deg,#1c1c1c,#0c0c0c);border:1px solid rgba(255,255,255,.3);box-shadow:0 0 70px rgba(255,255,255,.08);animation:letter .5s cubic-bezier(.2,.8,.2,1)}
+.paper{position:relative;width:100%;max-width:1000px;max-height:90vh;overflow:auto;border-radius:26px;padding:34px;background:linear-gradient(160deg,#171717,#000);border:1px solid rgba(255,255,255,.4);box-shadow:0 0 70px rgba(255,255,255,.08);animation:letter .5s cubic-bezier(.2,.8,.2,1)}
 @keyframes letter{from{opacity:0;transform:translateY(60px) scale(.95)}to{opacity:1;transform:none}}
 .paper .x{position:absolute;top:14px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:1.3rem;cursor:pointer}
 .paper .x:hover{background:var(--white);color:#0a0a0a}
@@ -200,7 +198,7 @@ ul.pts{list-style:none}
 ul.pts li{position:relative;padding-left:18px;margin-bottom:9px;font-size:.9rem;color:var(--muted)}
 ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--a2)}
 
-.pic{background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.03));display:grid;place-items:center;color:var(--muted);font-size:.8rem;position:relative;overflow:hidden}
+.pic{background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.05));display:grid;place-items:center;color:var(--muted);font-size:.8rem;position:relative;overflow:hidden}
 .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in}
 .pic span{text-align:center;padding:10px}
 .pic span b{display:block;font-size:1.6rem;margin-bottom:4px;font-weight:400}
@@ -251,8 +249,7 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
   .portrait .cut{width:min(78%,340px)}
   .portrait .chip.c1{left:-2%}.portrait .chip.c2{right:-2%}
   .bigword{top:24%;font-size:clamp(3.4rem,19vw,8rem)}
-  .about .photo{position:static}
-  .stats{grid-template-columns:repeat(2,1fr)}
+    .stats{grid-template-columns:repeat(2,1fr)}
   .skillpanel{grid-template-columns:1fr}
   .skillpanel .pic{aspect-ratio:16/9}
   .paper{padding:24px 20px}
@@ -298,13 +295,13 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
 
     <div class="hero-l">
       <span class="tag"><i></i> <span data-i="tag">Terbuka untuk peluang baru</span></span>
-      <h1 data-i="h1">Halo, saya <span class="grad">Lucky Denis Saputra</span></h1>
+      <h1 data-i="h1">Halo, saya <span class="grad">Lucky Denis Saputra S.Psi.</span></h1>
       <div class="role" id="role"></div>
     </div>
 
     <div class="portrait">
       <div class="cut">
-        <img class="body" src="foto-hero.png" alt="Lucky Denis Saputra">
+        <img class="body" src="foto-hero.png?v=3" alt="Lucky Denis Saputra" loading="eager" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='foto-hero.png'}else if(this.dataset.f==1){this.dataset.f=2;this.src='foto-duduk.jpg'}">
         <div class="chip c1" data-i="chip1">✦ IPK 3.99</div>
         <div class="chip c2">✦ I/O Psychology</div>
       </div>
@@ -331,7 +328,6 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
   <span class="eyebrow" data-i="about_eye">Tentang Saya</span>
   <h2 class="title" data-i="about_title">Mengenal lebih dekat</h2>
   <div class="about">
-    <div class="photo"><img src="foto-duduk.jpg" alt="Lucky Denis Saputra"></div>
     <div>
       <p data-i="about_p1">Psychology undergraduate specializing in Industrial and Organizational Psychology with hands-on experience in Human Resources, Learning &amp; Development, Talent Acquisition, Organizational Development, training facilitation, and academic administration.</p>
       <p data-i="about_p2">Experienced in supporting recruitment processes, training administration, candidate coordination, workload analysis, job description development, and program planning. Strong communication, coordination, public speaking, problem-solving, and stakeholder collaboration skills.</p>
@@ -344,11 +340,10 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
       </div>
 
       <h3 class="sub" data-i="edu_h">Pendidikan</h3>
-      <div class="edu" id="edu"></div>
+      <div class="folders" id="edu-folders"></div>
 
       <h3 class="sub">Skills</h3>
-      <div class="skillbtns" id="skillbtns"></div>
-      <div id="skillpanel"></div>
+      <div class="folders" id="skill-folders"></div>
     </div>
   </div>
 </section>
@@ -357,6 +352,18 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
 <section class="page" id="experience">
   <span class="eyebrow" data-i="exp_eye">Pengalaman</span>
   <h2 class="title" data-i="exp_title">Perjalanan profesional</h2>
+
+  <div class="silhouette" id="exp-slides">
+    <img class="on" src="foto-duduk.jpg" alt="Lucky Denis Saputra">
+    <img alt="">
+    <div class="dots"></div>
+    <div class="cap">
+      <h3></h3>
+      <p></p>
+    </div>
+  </div>
+
+  <div style="height:26px"></div>
   <p class="hint" data-i="hint_exp">Klik folder untuk membuka isinya, lengkap dengan dokumentasi fotonya.</p>
   <div class="folders" id="exp-folders"></div>
 </section>
@@ -369,10 +376,10 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
   <div class="silhouette" id="hero-slides">
     <img class="on" src="foto-siluet.jpg" alt="Siluet Lucky Denis Saputra">
     <img alt="">
-    <div class="dots" id="dots"></div>
+    <div class="dots"></div>
     <div class="cap">
-      <h3 id="cap-h"></h3>
-      <p id="cap-p"></p>
+      <h3></h3>
+      <p></p>
     </div>
   </div>
 
@@ -409,7 +416,7 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0 40px
   </div>
 </section>
 
-<footer>© <span id="yr"></span> Lucky Denis Saputra. <span data-i="rights">All rights reserved.</span></footer>
+<footer>© <span id="yr"></span> Lucky Denis Saputra S.Psi. <span data-i="rights">All rights reserved.</span></footer>
 <div class="lb" id="lb"><button class="lbn prev" data-d="-1" aria-label="Previous">‹</button><img alt=""><button class="lbn next" data-d="1" aria-label="Next">›</button></div>
 <div class="lt" id="lt"></div>
 
@@ -423,7 +430,7 @@ const T = {
 id:{
  nav_home:"Beranda",nav_about:"Tentang",nav_exp:"Pengalaman",nav_ach:"Pencapaian",nav_contact:"Kontak",
  tag:"Terbuka untuk peluang baru",
- h1:'Halo, saya <span class="grad">Lucky Denis Saputra</span>',
+ h1:'Halo, saya <span class="grad">Lucky Denis Saputra S.Psi.</span>',
  chip1:"✦ IPK 3.99",
  lead:"Mahasiswa sarjana Psikologi peminatan Psikologi Industri & Organisasi, dengan pengalaman langsung di Human Resources, Learning & Development, Talent Acquisition, dan Organizational Development.",
  cta1:"Hubungi Saya →",cta2:"Lihat Pengalaman",cta3:"Unduh CV ↓",
@@ -439,6 +446,7 @@ id:{
  ach_eye:"Pencapaian",ach_title:"Prestasi & Momen",
  ach_docs:"Dokumentasi Pencapaian",hint_ach:"Klik folder untuk melihat setiap pencapaian beserta foto dokumentasinya.",
  cap_h:"Di balik setiap pencapaian, ada proses.",cap_p:"Perjalanan yang membentuk siapa saya hari ini.",
+ ecap_h:"Setiap pengalaman membentuk langkah saya.",ecap_p:"Dari ruang kelas dan organisasi hingga dunia kerja.",
  lomba:"Lomba",mentor:"Mentor",volunteer:"Volunteer",publikasi:"Publikasi",
  soon:"Foto menyusul",back:"← Kembali",
  ct_eye:"Kontak",ct_title:"Mari terhubung",
@@ -451,7 +459,7 @@ id:{
 en:{
  nav_home:"Home",nav_about:"About",nav_exp:"Experience",nav_ach:"Achievements",nav_contact:"Contact",
  tag:"Open to new opportunities",
- h1:'Hi, I am <span class="grad">Lucky Denis Saputra</span>',
+ h1:'Hi, I am <span class="grad">Lucky Denis Saputra S.Psi.</span>',
  chip1:"✦ GPA 3.99",
  lead:"Psychology undergraduate specializing in Industrial & Organizational Psychology, with hands-on experience in Human Resources, Learning & Development, Talent Acquisition, and Organizational Development.",
  cta1:"Contact Me →",cta2:"View Experience",cta3:"Download CV ↓",
@@ -467,6 +475,7 @@ en:{
  ach_eye:"Achievements",ach_title:"Awards & Moments",
  ach_docs:"Achievement Documentation",hint_ach:"Click a folder to see each achievement with its photo documentation.",
  cap_h:"Behind every achievement, there is a process.",cap_p:"The journey that shaped who I am today.",
+ ecap_h:"Every experience shapes my steps.",ecap_p:"From the classroom and organizations to the workplace.",
  lomba:"Competition",mentor:"Mentor",volunteer:"Volunteer",publikasi:"Publication",
  soon:"Photo coming soon",back:"← Back",
  ct_eye:"Contact",ct_title:"Let's connect",
@@ -616,34 +625,20 @@ async function photosOf(base,max=8){
 }
 async function firstPhoto(base){ return (await probe(`${base}.jpg`)) ? `${base}.jpg` : null; }
 
-const itemsOf = (set,key) => set==="exp" ? ENTRIES.filter(e=>e.group===key) : ACHN.filter(a=>a.k===key);
-const baseOf  = (set,it)  => set==="exp" ? `exp-${it.id}` : `pencapaian-${it.n}`;
-const uidOf   = (set,it)  => set==="exp" ? it.id : it.n;
-const titleOf = (set,key) => set==="exp" ? tr("g_"+key) : tr(key);
+const itemsOf = (set,key) => set==="exp" ? ENTRIES.filter(e=>e.group===key) : set==="ach" ? ACHN.filter(a=>a.k===key) : set==="edu" ? EDUN : [SKN[+key]];
+const baseOf  = (set,it)  => ({exp:`exp-${it.id}`,ach:`pencapaian-${it.n}`,edu:`edu-${it.id}`,skill:`skill-${it.id}`})[set];
+const uidOf   = (set,it)  => set==="ach" ? it.n : it.id;
+const titleOf = (set,key) => set==="exp" ? tr("g_"+key) : set==="ach" ? tr(key) : set==="edu" ? tr("edu_h") : SKILLS[+key][0];
 
 /* ================= RENDER ================= */
-let activeSkill = 0;
-
-function renderEdu(){
-  $("#edu").innerHTML = EDU.map((e,i) => {
-    const photos = Array.from({length:e.n||0},(_,j)=>pic(`edu-${i+1}-${j+1}.jpg`)).join("");
-    const sub = e.extra ? `${e.o} · ${tr("gpa")} 3.99 · Concentration: Industrial and Organizational Psychology` : e.o;
-    return `<div><small>${e.d[lang]}</small><h4>${e.t}</h4><p>${sub}</p>${photos?`<div class="gal">${photos}</div>`:""}</div>`;
-  }).join("");
-}
-
-function renderSkills(){
-  $("#skillbtns").innerHTML = SKILLS.map((g,i)=>`<button data-s="${i}" class="${i===activeSkill?"on":""}">${g[0]}</button>`).join("");
-  const g = SKILLS[activeSkill];
-  $("#skillpanel").innerHTML = `<div class="skillpanel"><div class="pic"><span><b>▣</b>${tr("soon")}</span><img src="skill-${activeSkill+1}.jpg" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='foto-duduk.jpg'}else{this.remove()}" onclick="openLb(this.src)"></div><div><h4>${g[0]}</h4><div class="skills">${g.slice(1).map(s=>`<span>${s}</span>`).join("")}</div></div></div>`;
-}
-$("#skillbtns").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;activeSkill=+b.dataset.s;renderSkills();});
+const EDUN = EDU.map((e,i)=>({...e,id:i+1}));
+const SKN = SKILLS.map((g,i)=>({id:i+1,t:g[0],tags:g.slice(1)}));
 
 /* ---------- FOLDER ---------- */
 function renderFolders(){
   const mk = (set,keys,box) => {
     $(box).innerHTML = keys.map(k => {
-      const n = itemsOf(set,k).length, t = titleOf(set,k);
+      const n = set==="skill" ? SKN[+k].tags.length : itemsOf(set,k).length, t = titleOf(set,k);
       return `<div class="folder" data-set="${set}" data-key="${k}" tabindex="0" role="button" aria-label="${t}"><div class="fback"></div><div class="fpapers"><i></i><i></i><i></i></div><div class="ffront"><div class="fcount"><b>${n}</b><span>${t}</span></div><span class="fdots">•••</span></div></div>`;
     }).join("");
     keys.forEach(async k => {
@@ -654,8 +649,10 @@ function renderFolders(){
   };
   mk("exp",EXP_GROUPS,"#exp-folders");
   mk("ach",KINDS,"#ach-folders");
+  mk("edu",["edu"],"#edu-folders");
+  mk("skill",SKN.map((_,i)=>String(i)),"#skill-folders");
 }
-["#exp-folders","#ach-folders"].forEach(sel=>{
+["#exp-folders","#ach-folders","#edu-folders","#skill-folders"].forEach(sel=>{
   const box = $(sel);
   box.addEventListener("click",e=>{ const f=e.target.closest(".folder"); if(f) openFolder(f.dataset.set,f.dataset.key); });
   box.addEventListener("keydown",e=>{ if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("folder")){e.preventDefault();e.target.click();} });
@@ -671,8 +668,11 @@ function openModal(html){
 function closeModal(){ M.classList.remove("show"); M.innerHTML=""; document.body.classList.remove("noscroll"); }
 
 function mini(set,it){
-  const date = set==="exp" ? (it.sido?tr("sido_badge"):it.d) : it.y;
-  const sub  = set==="exp" ? (it.sido?tr("sido_meta"):it.o) : it.d;
+  let date, sub;
+  if(set==="exp"){ date = it.sido?tr("sido_badge"):it.d; sub = it.sido?tr("sido_meta"):it.o; }
+  else if(set==="ach"){ date = it.y; sub = it.d; }
+  else if(set==="edu"){ date = it.d[lang]; sub = it.o; }
+  else { date = "Skills"; sub = it.tags.slice(0,4).join(", "); }
   return `<button class="mini" data-uid="${uidOf(set,it)}"><div class="pic" data-base="${baseOf(set,it)}"><span><b>▣</b>${tr("soon")}</span></div><div class="in"><small>${date}</small><h4>${it.t}</h4><p>${sub||""}</p></div></button>`;
 }
 function openFolder(set,key){
@@ -686,22 +686,25 @@ function openFolder(set,key){
   });
 }
 function openItem(set,uid){
-  const it = (set==="exp" ? ENTRIES : ACHN).find(x=>uidOf(set,x)===uid); if(!it) return;
+  const list = set==="exp" ? ENTRIES : set==="ach" ? ACHN : set==="edu" ? EDUN : SKN;
+  const it = list.find(x=>uidOf(set,x)===uid); if(!it) return;
   const back = st.multi ? `<button class="backbtn" data-back>${tr("back")}</button>` : "";
-  let head, meta, body = "";
+  let head, meta = "", body = "";
   if(set==="exp"){
     head = it.sido ? tr("sido_badge") : it.d;
     meta = it.sido ? tr("sido_meta") : it.o;
     body = it.sido
       ? `<div class="subgrid">${it.pos.map(p=>`<div class="pos"><div class="num">${p.n}</div><h4>${p.h}</h4><ul class="pts">${p.p.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>`
       : `<ul class="pts">${it.p.map(x=>`<li>${x}</li>`).join("")}</ul>`;
-  } else { head = `${it.y} · ${tr(it.k)}`; meta = it.d; }
+  } else if(set==="ach"){ head = `${it.y} · ${tr(it.k)}`; meta = it.d; }
+  else if(set==="edu"){ head = it.d[lang]; meta = it.extra ? `${it.o} · ${tr("gpa")} 3.99 · Concentration: Industrial and Organizational Psychology` : it.o; }
+  else { head = `${it.tags.length} Skills`; body = `<div class="skills">${it.tags.map(x=>`<span>${x}</span>`).join("")}</div>`; }
   openModal(`${back}<div><span class="badge">${head}</span></div><h3>${it.t}</h3>${meta?`<p class="meta">${meta}</p>`:""}<div class="gslot" data-base="${baseOf(set,it)}"><div class="pic"><span><b>▣</b>${tr("soon")}</span></div></div>${body}`);
   const slot = M.querySelector(".gslot");
-  photosOf(slot.dataset.base).then(list=>{
-    if(!slot.isConnected || !list.length) return;
-    slot.dataset.list = JSON.stringify(list);
-    slot.innerHTML = `<div class="gal2">${list.map((u,i)=>`<img src="${u}" alt="" loading="lazy" data-i="${i}">`).join("")}</div>`;
+  photosOf(slot.dataset.base).then(l=>{
+    if(!slot.isConnected || !l.length) return;
+    slot.dataset.list = JSON.stringify(l);
+    slot.innerHTML = `<div class="gal2">${l.map((u,i)=>`<img src="${u}" alt="" loading="lazy" data-i="${i}">`).join("")}</div>`;
   });
 }
 M.addEventListener("click",e=>{
@@ -727,31 +730,30 @@ document.addEventListener("keydown",e=>{
   } else if(e.key==="Escape" && M.classList.contains("show")) closeModal();
 });
 
-/* ================= BANNER BERGANTI-GANTI (foto pencapaian) ================= */
-let slides = [{src:"foto-siluet.jpg",h:null,p:null}], si = 0, slideTimer = null, front = 0;
-const sImgs = () => document.querySelectorAll("#hero-slides img");
-function drawCaption(){
-  const s = slides[si];
-  if(s.h===null){ $("#cap-h").textContent = tr("cap_h"); $("#cap-p").textContent = tr("cap_p"); }
-  else { $("#cap-h").textContent = s.h; $("#cap-p").textContent = s.p; }
-  $("#dots").innerHTML = slides.length>1 ? slides.map((_,i)=>`<i class="${i===si?"on":""}"></i>`).join("") : "";
+/* ================= BANNER BERGANTI-GANTI (Pencapaian & Pengalaman) ================= */
+function Carousel(id, firstSrc, kh, kp){
+  const root = $("#"+id), imgs = root.querySelectorAll("img"), ch = root.querySelector(".cap h3"), cp = root.querySelector(".cap p"), dots = root.querySelector(".dots");
+  const slides = [{src:firstSrc,h:null,p:null}]; let si = 0, front = 0, timer = null;
+  function draw(){
+    const s0 = slides[si];
+    ch.textContent = s0.h===null ? tr(kh) : s0.h;
+    cp.textContent = s0.h===null ? tr(kp) : s0.p;
+    dots.innerHTML = slides.length>1 ? slides.map((_,i)=>`<i class="${i===si?"on":""}"></i>`).join("") : "";
+  }
+  function show(n){
+    si = n % slides.length;
+    const next = imgs[1-front];
+    next.onload = () => { imgs[front].classList.remove("on"); next.classList.add("on"); front = 1-front; };
+    next.src = slides[si].src;
+    draw();
+  }
+  function start(){ clearInterval(timer); if(slides.length>1) timer = setInterval(()=>show(si+1),4500); }
+  return {draw, add(list,h,p){ list.forEach(src=>slides.push({src,h,p})); if(list.length){ draw(); start(); } }};
 }
-function showSlide(n){
-  si = n % slides.length;
-  const imgs = sImgs(), next = imgs[1-front];
-  next.onload = () => { imgs[front].classList.remove("on"); next.classList.add("on"); front = 1-front; };
-  next.src = slides[si].src;
-  drawCaption();
-}
-function startSlides(){
-  clearInterval(slideTimer);
-  if(slides.length>1) slideTimer = setInterval(()=>showSlide(si+1),4500);
-}
-ACHN.forEach(async a => {
-  const list = await photosOf(`pencapaian-${a.n}`);
-  list.forEach(src => slides.push({src,h:a.t,p:`${a.y} · ${a.d}`}));
-  if(list.length){ drawCaption(); startSlides(); }
-});
+const carA = Carousel("hero-slides","foto-siluet.jpg","cap_h","cap_p");
+const carE = Carousel("exp-slides","foto-duduk.jpg","ecap_h","ecap_p");
+ACHN.forEach(async a => carA.add(await photosOf(`pencapaian-${a.n}`), a.t, `${a.y} · ${a.d}`));
+ENTRIES.forEach(async e => carE.add(await photosOf(`exp-${e.id}`), e.t, e.o ? `${e.d} · ${e.o}` : e.d));
 
 /* ================= BAHASA ================= */
 function applyLang(){
@@ -760,7 +762,7 @@ function applyLang(){
   document.querySelectorAll("[data-ph]").forEach(el=>{ el.placeholder = tr(el.dataset.ph); });
   document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
   closeModal();
-  renderEdu(); renderSkills(); renderFolders(); drawCaption();
+  renderFolders(); carA.draw(); carE.draw();
   startTyping();
 }
 $("#lang").addEventListener("click",e=>{
